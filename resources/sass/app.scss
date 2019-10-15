@@ -1,0 +1,30 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+//Awesome
+@import "~font-awesome/scss/font-awesome.scss";
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+//slider
+@import "./fotorama.css";
+
+@import "~jquery-bar-rating/dist/themes/fontawesome-stars.css";
+
+.navbar {
+    padding: 0.35rem 1rem;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.app-content {
+    flex: 1;
+}
+
+
+

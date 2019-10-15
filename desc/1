@@ -1,0 +1,70 @@
+Advert(Product)
+
+id
+title (название)
+slug ()
+description (описание)
+price (цена)
+images (картинки)
+categories (категории)
+status (статус - в наличии/нет в наличии)
+
+-----------------------------------------
+Categories
+
+id
+name
+slug
+
+-----------------------------------------
+
+Advert_Category
+
+advert_id
+category_id
+
+-----------------------------------------
+
+Users
+
+id
+first_name
+second_name
+email
+password
+verified
+role
+status
+
+-----------------------------------------
+
+Favorites
+
+id
+user_id
+advert_id
+
+-----------------------------------------
+
+Images
+
+id
+advert_id
+path
+
+-----------------------------------------
+
+Reviews
+
+id
+advert_id
+user_id
+text
+
+-----------------------------------------
+
+Offers
+
+id
+offer_id
+context
