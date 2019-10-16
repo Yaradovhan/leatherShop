@@ -63,7 +63,8 @@
                     @include('products.comments.commentsDisplay', ['comments' => $product->comments, 'product_id' => $product->id])
                 </div>
             @endif
-            <div>
+
+            <div class="pt-4">
                 <form action="{{route('products.comments.addComment', $product->id)}}" method="POST">
                     @csrf
                     <div class="form-group">

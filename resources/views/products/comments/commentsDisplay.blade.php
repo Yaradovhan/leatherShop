@@ -1,11 +1,11 @@
 @foreach($comments as $comment)
-    <div class="display-comment"
+    <div class="card-body"
          @if($comment->parent_id != null)
             style="margin-left:40px;"
         @endif
     >
-        <strong>{{ $comment->user->getFullName() }}</strong>
         <p>{{ $comment->comment }}</p>
+        <small class="text-muted">Posted by {{$comment->user->getFullName()}}</small>
         <a href="" id="reply"></a>
         <form method="post" action="{{ route('products.comments.addComment', $product) }}">
             @csrf
