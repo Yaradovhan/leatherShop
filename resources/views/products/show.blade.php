@@ -61,14 +61,6 @@
                         Product Reviews
                     </div>
                     @include('products.comments.commentsDisplay', ['comments' => $product->comments, 'product_id' => $product->id])
-                    {{--                    @foreach($product->comments as $comment)--}}
-                    {{--                        <div class="card-body">--}}
-                    {{--                            <p>{{$comment->comment}}</p>--}}
-                    {{--                            <small class="text-muted">Posted by {{$comment->user->getFullName()}}</small>--}}
-                    {{--                            <hr>--}}
-                    {{--                            <a href="#" class="btn btn-success">Leave a Review</a>--}}
-                    {{--                        </div>--}}
-                    {{--                    @endforeach--}}
                 </div>
             @endif
             <div>

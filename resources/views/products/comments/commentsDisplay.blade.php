@@ -1,12 +1,16 @@
 @foreach($comments as $comment)
-    <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
+    <div class="display-comment"
+         @if($comment->parent_id != null)
+            style="margin-left:40px;"
+        @endif
+    >
         <strong>{{ $comment->user->getFullName() }}</strong>
         <p>{{ $comment->comment }}</p>
         <a href="" id="reply"></a>
         <form method="post" action="{{ route('products.comments.addComment', $product) }}">
             @csrf
             <div class="form-group">
-                <input type="text" name="body" class="form-control" />
+                <input type="text" name="comment" class="form-control" />
                 <input type="hidden" name="product_id" value="{{ $product->id }}" />
                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
             </div>
@@ -17,3 +21,13 @@
         @include('products.comments.commentsDisplay', ['comments' => $comment->replies])
     </div>
 @endforeach
+
+
+{{--                                        @foreach($product->comments as $comment)--}}
+{{--                                            <div class="card-body">--}}
+{{--                                                <p>{{$comment->comment}}</p>--}}
+{{--                                                <small class="text-muted">Posted by {{$comment->user->getFullName()}}</small>--}}
+{{--                                                <hr>--}}
+{{--                                                <a href="#" class="btn btn-success">Leave a Review</a>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
