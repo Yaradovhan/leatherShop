@@ -10,21 +10,22 @@ Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/home', 'AdminController@index')->name('admin.home');
 
-Route::get('/products', 'ProductController@index')->name('products');
-Route::get('/products/{product}', 'ProductController@show')->name('product.show');
-Route::post('/products/{product}', 'ProductController@order');
-Route::post('/products/rating/{product}', 'ProductController@changeRate')->name('product.rating')->middleware('auth');
-
+Route::get('/products', 'Product\ProductController@index')->name('products');
+Route::get('/products/{product}', 'Product\ProductController@show')->name('product.show');
+Route::post('/products/{product}', 'Product\ProductController@order');
+Route::post('/products/rating/{product}', 'Product\ProductController@changeRate')->name('product.rating')->middleware('auth');
+Route::post('/products/{product}/favorites', 'Product\FavoriteController@add')->name('product.favorites');
+Route::delete('/products/{product}/favorites', 'Product\FavoriteController@remove');
 
 Route::group([
     'prefix' => 'products/comments',
     'as' => 'products.comments.',
     'middleware' => ['auth']
 ], function () {
-    Route::get('/', 'CommentController@show')->name('comments');
-    Route::post('/{product}', 'CommentController@store')->name('addComment');
-    Route::put('/{comment}', 'CommentController@update')->name('editComment');
-    Route::delete('/{comment}', 'CommentController@delete')->name('deleteComment');
+    Route::get('/', 'Product\CommentController@show')->name('comments');
+    Route::post('/{product}', 'Product\CommentController@store')->name('addComment');
+    Route::put('/{comment}', 'Product\CommentController@update')->name('editComment');
+    Route::delete('/{comment}', 'Product\CommentController@delete')->name('deleteComment');
 });
 
 
@@ -46,6 +47,6 @@ Route::group([
         Route::post('/phone/auth', 'PhoneController@auth')->name('phone.auth');
     });
 
-    Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
-    Route::delete('favorites/{advert}', 'FavoriteController@remove')->name('favorites.remove');
+//    Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
+//    Route::delete('favorites/{product}', 'FavoriteController@remove')->name('favorites.remove');
 });

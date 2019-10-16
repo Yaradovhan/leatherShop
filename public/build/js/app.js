@@ -37942,6 +37942,8 @@ $('.product-slider').fotorama({
 $(function () {
   $('.rating').barrating({
     theme: 'fontawesome-stars',
+    allowEmpty: true,
+    emptyValue: '0',
     onSelect: function onSelect(value, text, event) {
       var el = this;
       var el_id = el.$elem.data('id');
@@ -37963,6 +37965,28 @@ $(function () {
         });
       }
     }
+  });
+});
+$(function () {
+  $('.main_rating').barrating({
+    theme: 'fontawesome-stars-o',
+    allowEmpty: true,
+    emptyValue: '0'
+  });
+});
+$(function () {
+  $('.favme').click(function () {
+    var data = $(this).data(),
+        url = data.source,
+        active = $(this).hasClass("active"),
+        typeHttp = active ? "delete" : "post";
+    axios({
+      method: typeHttp,
+      url: url
+    })["catch"](function (error) {
+      console.error(error);
+    });
+    $(this).toggleClass('active');
   });
 });
 

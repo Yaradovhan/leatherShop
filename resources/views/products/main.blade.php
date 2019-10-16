@@ -46,10 +46,11 @@
 
             <div class="row">
                 @foreach($products as $product)
-{{--{{dd($product)}}--}}
+                    {{--{{dd($product)}}--}}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="{{route('product.show', $product)}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                            <a href="{{route('product.show', $product)}}"><img class="card-img-top"
+                                                                               src="http://placehold.it/700x400" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="{{route('product.show', $product)}}">{{$product->title}}</a>
@@ -59,21 +60,52 @@
                                     @foreach($product->category as $category)
                                         <a href="#" class="badge badge-info">{{$category->name}}</a>
                                     @endforeach
-{{--                                    {{$product->description}}--}}
+                                    {{--                                    {{$product->description}}--}}
                                 </p>
+                                <select class='main_rating' id='main_rating_{{$product->id}}'>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <script type='text/javascript'>
+                                    $(function () {
+                                        $('#main_rating_{{$product->id}}').barrating('set',{{round($product->averageRating)}});
+                                        $('#main_rating_{{$product->id}}').barrating('readonly', true);
+                                    });
+                                </script>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                <small class="text-muted">
+                                    <div class="fav-btn">
+                                            <span
+                                                class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-heart"
+                                                data-source="{{ route('product.favorites', $product) }}">
+                                            </span>
+                                    </div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            var isFav = "{{$user->hasInFavorites($product->id)}}";
+                                            if (isFav) {
+                                                $('.favme_{{$product->id}}').toggleClass('active');
+                                            }
+                                        })
+                                    </script>
+                                </small>
                             </div>
+
+                            </small>
                         </div>
                     </div>
-
-                @endforeach
             </div>
-            <!-- /.row -->
 
+            @endforeach
         </div>
-        <!-- /.col-lg-9 -->
+        <!-- /.row -->
+
+    </div>
+    <!-- /.col-lg-9 -->
 
     </div>
     <!-- /.row -->

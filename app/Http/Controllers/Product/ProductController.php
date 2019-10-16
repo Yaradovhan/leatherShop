@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Product;
 
 use App\Entity\Product\Product;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,9 +11,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->where('status','=','active')->paginate(10);
+        $products = Product::with('category')->where('status', '=', 'active')->paginate(10);
+        $user = Auth::user();
 
-        return view('products.main', compact('products'));
+        return view('products.main', compact('products', 'user'));
     }
 
     public function show(Product $product)
