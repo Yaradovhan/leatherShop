@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('product_id');
-            $table->integer('parent_id');
+            $table->integer('parent_id')->nullable();
             $table->text('comment');
             $table->timestamps();
             $table->softDeletes();

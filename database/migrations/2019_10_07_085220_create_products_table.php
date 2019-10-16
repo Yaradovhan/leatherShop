@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->float('price');
-            $table->string('status', 16);
+            $table->string('status', 16)->default('wait');
             $table->timestamps();
         });
     }

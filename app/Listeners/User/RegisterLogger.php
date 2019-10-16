@@ -12,7 +12,7 @@ class RegisterLogger
 {
     public function handle(Registered $event)
     {
-        $logRow = 'New registration: '.$event->user->name.', email: '.$event->user->email.' in: '.Carbon::now();
+        $logRow = 'New registration: '.$event->user->first_name.', email: '.$event->user->email.' in: '.Carbon::now();
         Log::channel('registrationLog')->info($logRow);
 //        Log::info($logRow);
     }
