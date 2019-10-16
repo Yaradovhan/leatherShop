@@ -61,7 +61,7 @@ $(function () {
         }).catch(function (error) {
             console.error(error);
         });
-        $(this).toggleClass('active')
+        $(this).toggleClass('active');
     });
 });
 

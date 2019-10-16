@@ -36,6 +36,21 @@
                     Average Rating : <span
                         id='avgrating_{{$product->id}}'>{{substr($product->averageRating,0,3)}}</span>
 
+                    <div class="fav-btn">
+                        Add to favofite
+                        <span
+                            class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-heart"
+                            data-source="{{ route('product.favorites', $product) }}">
+                        </span>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            var isFav = "{{$user->hasInFavorites($product->id)}}";
+                            if (isFav) {
+                                $('.favme_{{$product->id}}').toggleClass('active');
+                            }
+                        })
+                    </script>
                 </div>
 
             </div>
@@ -46,14 +61,14 @@
                         Product Reviews
                     </div>
                     @include('products.comments.commentsDisplay', ['comments' => $product->comments, 'product_id' => $product->id])
-{{--                    @foreach($product->comments as $comment)--}}
-{{--                        <div class="card-body">--}}
-{{--                            <p>{{$comment->comment}}</p>--}}
-{{--                            <small class="text-muted">Posted by {{$comment->user->getFullName()}}</small>--}}
-{{--                            <hr>--}}
-{{--                            <a href="#" class="btn btn-success">Leave a Review</a>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
+                    {{--                    @foreach($product->comments as $comment)--}}
+                    {{--                        <div class="card-body">--}}
+                    {{--                            <p>{{$comment->comment}}</p>--}}
+                    {{--                            <small class="text-muted">Posted by {{$comment->user->getFullName()}}</small>--}}
+                    {{--                            <hr>--}}
+                    {{--                            <a href="#" class="btn btn-success">Leave a Review</a>--}}
+                    {{--                        </div>--}}
+                    {{--                    @endforeach--}}
                 </div>
             @endif
             <div>
