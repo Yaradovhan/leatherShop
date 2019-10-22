@@ -14475,7 +14475,12 @@ body {
 .fav-btn {
   display: flex;
   height: 100%;
-  justify-content: center;
+  justify-content: left;
+  align-items: center;
+}
+
+.buy-group-btn {
+  justify-content: right;
   align-items: center;
 }
 

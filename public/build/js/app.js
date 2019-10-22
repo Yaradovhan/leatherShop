@@ -37931,13 +37931,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fotorama_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fotorama_js__WEBPACK_IMPORTED_MODULE_1__);
 
 
-$('.product-slider').fotorama({
-  shuffle: true,
-  maxwidth: '100%',
-  ratio: 16 / 9,
-  allowfullscreen: true,
-  nav: 'thumbs',
-  loop: true
+$(function () {
+  $('.product-slider').fotorama({
+    shuffle: true,
+    maxwidth: '100%',
+    ratio: 16 / 9,
+    nav: 'thumbs',
+    loop: true,
+    allowfullscreen: 'native'
+  });
 });
 $(function () {
   $('.rating').barrating({
@@ -37987,6 +37989,20 @@ $(function () {
       console.error(error);
     });
     $(this).toggleClass('active');
+  });
+});
+$(function () {
+  $('.btn-buy').click(function () {
+    var data = $(this).data(),
+        url = data.source;
+    axios({
+      method: 'put',
+      url: url
+    }).then(function (response) {
+      console.log(response);
+    })["catch"](function (error) {
+      console.error(error);
+    });
   });
 });
 

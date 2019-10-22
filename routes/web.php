@@ -17,6 +17,12 @@ Route::post('/products/rating/{product}', 'Product\ProductController@changeRate'
 Route::post('/products/{product}/favorites', 'Product\FavoriteController@add')->name('product.favorites');
 Route::delete('/products/{product}/favorites', 'Product\FavoriteController@remove');
 
+Route::put('/products/{product}/addToCart', 'Product\CartController@addToCart')->name('product.addToCart');
+Route::delete('/products/{product}/removeFromCart', 'Product\CartController@removeFromCart')->name('product.removeFromCart');
+Route::patch('/products/{product}/updateCart', 'Product\CartController@updateCart')->name('product.updateCart');
+Route::get('/products/getCart', 'Product\CartController@getAll')->name('product.getCart');
+
+
 Route::group([
     'prefix' => 'products/comments',
     'as' => 'products.comments.',
@@ -27,7 +33,6 @@ Route::group([
     Route::put('/{comment}', 'Product\CommentController@update')->name('editComment');
     Route::delete('/{comment}', 'Product\CommentController@delete')->name('deleteComment');
 });
-
 
 Route::group([
     'prefix' => 'cabinet',
@@ -46,7 +51,5 @@ Route::group([
         Route::put('/phone', 'PhoneController@verify')->name('phone.verify');
         Route::post('/phone/auth', 'PhoneController@auth')->name('phone.auth');
     });
-
-//    Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
-//    Route::delete('favorites/{product}', 'FavoriteController@remove')->name('favorites.remove');
 });
+

@@ -17,7 +17,6 @@
                     <h3 class="card-title">{{$product->title}}</h3>
                     <h4>${{$product->price}}</h4>
                     <p class="card-text">{{$product->description}}</p>
-
                     <select class='rating' id='rating_{{$product->id}}' data-id='rating_{{$product->id}}'
                             data-source="{{ route('product.rating', $product) }}">
                         <option value="1">1</option>
@@ -28,16 +27,19 @@
                     </select>
                     <script type='text/javascript'>
                         $(function () {
-                            {{--console.log({{$product->averageRating}});--}}
                             $('#rating_{{$product->id}}').barrating('set',{{round($product->averageRating)}});
                         });
                     </script>
-                    {{--                    Average Rating : <span id='avgrating_{{$product->id}}'>{{round($product->averageRating, 1)}}</span>--}}
-                    Average Rating : <span
-                        id='avgrating_{{$product->id}}'>{{substr($product->averageRating,0,3)}}</span>
+                    <div class="row">
+                        <div class="col-auto mr-auto">Average Rating : <span
+                                id='avgrating_{{$product->id}}'>{{substr($product->averageRating,0,3)}}</span></div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary btn-buy" data-source="{{route('product.addToCart', $product)}}">Add to cart</button>
+                        </div>
+                    </div>
+
 
                     <div class="fav-btn">
-                        Add to favofite
                         <span
                             class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-heart"
                             data-source="{{ route('product.favorites', $product) }}">
@@ -52,7 +54,6 @@
                         })
                     </script>
                 </div>
-
             </div>
 
             @if(count($product->comments)>0)

@@ -1,13 +1,15 @@
 import './bootstrap';
 import './fotorama.js';
 
-$('.product-slider').fotorama({
-    shuffle: true,
-    maxwidth: '100%',
-    ratio: 16 / 9,
-    allowfullscreen: true,
-    nav: 'thumbs',
-    loop: true
+$(function () {
+    $('.product-slider').fotorama({
+        shuffle: true,
+        maxwidth: '100%',
+        ratio: 16 / 9,
+        nav: 'thumbs',
+        loop: true,
+        allowfullscreen: 'native'
+    });
 });
 
 $(function () {
@@ -65,6 +67,22 @@ $(function () {
     });
 });
 
+
+$(function () {
+    $('.btn-buy').click(function () {
+        var data = $(this).data(),
+            url = data.source;
+        axios({
+            method: 'put',
+            url: url
+        }).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.error(error);
+        });
+
+    })
+})
 
 
 
