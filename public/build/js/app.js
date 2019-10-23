@@ -37940,8 +37940,6 @@ $(function () {
     loop: true,
     allowfullscreen: 'native'
   });
-});
-$(function () {
   $('.rating').barrating({
     theme: 'fontawesome-stars',
     allowEmpty: true,
@@ -37968,15 +37966,11 @@ $(function () {
       }
     }
   });
-});
-$(function () {
   $('.main_rating').barrating({
     theme: 'fontawesome-stars-o',
     allowEmpty: true,
     emptyValue: '0'
   });
-});
-$(function () {
   $('.favme').click(function () {
     var data = $(this).data(),
         url = data.source,
@@ -37990,19 +37984,49 @@ $(function () {
     });
     $(this).toggleClass('active');
   });
-});
-$(function () {
   $('.btn-buy').click(function () {
     var data = $(this).data(),
-        url = data.source;
-    axios({
-      method: 'put',
-      url: url
+        url = data.source,
+        name = data.name,
+        id = data.id;
+    axios.put(url, {
+      params: {
+        id: id,
+        name: name
+      }
     }).then(function (response) {
       console.log(response);
     })["catch"](function (error) {
       console.error(error);
     });
+  });
+  $('.minus-btn').on('click', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+
+    if (value > 1) {
+      value = value - 1;
+    } else {
+      value = 1;
+    }
+
+    $input.val(value);
+  });
+  $('.plus-btn').on('click', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+
+    if (value < 100) {
+      value = value + 1;
+    } else {
+      value = 100;
+    }
+
+    $input.val(value);
   });
 });
 

@@ -14590,3 +14590,46 @@ body {
           animation: favme-anime 0.3s;
 }
 
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+.popup-stuff__count-value {
+  display: inline-block;
+  vertical-align: center;
+  background: transparent;
+  line-height: 24px;
+  color: #7f7676;
+  pointer-events: none;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.plusmin {
+  border-radius: 50%;
+}
+
+.fa {
+  vertical-align: inherit;
+}
+
+.items__head {
+  color: #a59c9c;
+  padding: 8px 0 27px;
+}
+
+.cart-total {
+  border-left: 4px solid #fab134;
+  background: #f8f8f8;
+  padding: 44px 59px 44px 56px;
+}
+

@@ -8,7 +8,6 @@
 @import '~bootstrap/scss/bootstrap';
 //slider
 @import "./fotorama.css";
-
 @import "~jquery-bar-rating/dist/themes/fontawesome-stars.css";
 @import "~jquery-bar-rating/dist/themes/fontawesome-stars-o.css";
 
@@ -42,13 +41,13 @@ body {
 }
 
 .fav-btn {
-    display:flex;
+    display: flex;
     height: 100%;
     justify-content: left;
     align-items: center;
 }
 
-.buy-group-btn{
+.buy-group-btn {
     justify-content: right;
     align-items: center;
 }
@@ -58,20 +57,20 @@ body {
 }
 
 @keyframes favme-anime {
-    0%   {
+    0% {
         opacity: 1;
         font-size: ms(0);
         -webkit-text-stroke-color: transparent;
     }
-    25%	 {
-        opacity:.6;
+    25% {
+        opacity: .6;
         color: #FFF;
         font-size: ms(-2);
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: #DC3232;
     }
-    75%	 {
-        opacity:.6;
+    75% {
+        opacity: .6;
         color: #FFF;
         font-size: ms(3);
         -webkit-text-stroke-width: 1px;
@@ -94,7 +93,7 @@ body {
 }
 
 .favme {
-    display:block;
+    display: block;
     font-size: ms(2);
     width: auto;
     height: auto;
@@ -107,10 +106,61 @@ body {
     &.active {
         color: #DC3232;
     }
+
     &:hover {
         animation: favme-hover .3s infinite alternate;
     }
+
     &.is_animating {
         animation: favme-anime .3s;
     }
+}
+
+.quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+}
+
+.popup-stuff__count-value {
+    display: inline-block;
+    vertical-align: center;
+    background: transparent;
+    line-height: 24px;
+    color: #7f7676;
+    pointer-events: none;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.plusmin {
+    border-radius: 50%;
+}
+
+.fa {
+    vertical-align: inherit;
+}
+
+.items__head {
+    color: #a59c9c;
+    padding: 8px 0 27px;
+}
+
+//.card-body{
+//    padding: 1px 1.25rem 0px 1.25rem;
+//}
+
+.cart-total{
+    //width: 366px;
+    border-left: 4px solid #fab134;
+    background: #f8f8f8;
+    padding: 44px 59px 44px 56px;
+    //border-radius: 0 35px 35px 0;
 }

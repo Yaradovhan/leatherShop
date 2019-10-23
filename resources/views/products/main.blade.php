@@ -84,32 +84,23 @@
                                                 data-source="{{ route('product.favorites', $product) }}">
                                             </span>
                                     </div>
-                                    <script>
-                                        $(document).ready(function () {
-                                            var isFav = "{{$user->hasInFavorites($product->id)}}";
-                                            if (isFav) {
-                                                $('.favme_{{$product->id}}').toggleClass('active');
-                                            }
-                                        })
-                                    </script>
+                                    @auth
+                                        <script>
+                                            $(document).ready(function () {
+                                                var isFav = "{{$user->hasInFavorites($product->id)}}";
+                                                if (isFav) {
+                                                    $('.favme_{{$product->id}}').toggleClass('active');
+                                                }
+                                            })
+                                        </script>
+                                    @endauth
                                 </small>
                             </div>
-
-                            </small>
                         </div>
                     </div>
+                @endforeach
             </div>
-
-            @endforeach
         </div>
-        <!-- /.row -->
-
-    </div>
-    <!-- /.col-lg-9 -->
-
-    </div>
-    <!-- /.row -->
-
     </div>
 @endsection
 

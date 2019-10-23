@@ -34,7 +34,12 @@
                         <div class="col-auto mr-auto">Average Rating : <span
                                 id='avgrating_{{$product->id}}'>{{substr($product->averageRating,0,3)}}</span></div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary btn-buy" data-source="{{route('product.addToCart', $product)}}">Add to cart</button>
+                            <button type="button" class="btn btn-primary btn-buy"
+                                    data-id="{{$product->id}}"
+                                    data-name="{{$product->title}}"
+                                    data-source="{{route('product.addToCart')}}"
+                            >Add to cart
+                            </button>
                         </div>
                     </div>
 
@@ -45,14 +50,16 @@
                             data-source="{{ route('product.favorites', $product) }}">
                         </span>
                     </div>
-                    <script>
-                        $(document).ready(function () {
-                            var isFav = "{{$user->hasInFavorites($product->id)}}";
-                            if (isFav) {
-                                $('.favme_{{$product->id}}').toggleClass('active');
-                            }
-                        })
-                    </script>
+                    @auth
+                        <script>
+                            $(document).ready(function () {
+                                var isFav = "{{$user->hasInFavorites($product->id)}}";
+                                if (isFav) {
+                                    $('.favme_{{$product->id}}').toggleClass('active');
+                                }
+                            })
+                        </script>
+                    @endauth
                 </div>
             </div>
 
