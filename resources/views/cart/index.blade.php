@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-9">
                     <div class="card-body">
-                        <div class="cart-items">
+                        <div class="cart-items" id="cart_items">
                             <div class="cart-item items__head row">
                                 <div class="col-5">Товар</div>
                                 <div class="col">Цена</div>
@@ -25,35 +25,39 @@
                             @foreach($cartData as $item)
                                 <div class="cart-item row">
                                     <div class="col-5">{{$item->name}}</div>
-                                    <div class="col">{{$item->price}}</div>
+                                    <div class="col price-col">{{$item->price}}</div>
                                     <div class="col">
                                         <div class="quantity">
                                             <div class="row">
                                                 <button type="button"
                                                         class="btn btn-sm btn-outline-dark plus-btn plusmin"><i
                                                         class="fa fa-plus"></i></button>
-                                                <input type="text" value="1" class="popup-stuff__count-value" readonly>
+                                                <input type="text" value="1" class="popup-stuff__count-value counter" data-count="1"  data-price="{{$item->price}}" readonly>
                                                 <button type="button"
                                                         class="btn btn-sm btn-outline-dark minus-btn plusmin"><i
                                                         class="fa fa-minus"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">100500</div>
+                                    <div class="col sum">{{$item->price}}</div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="cart-total">
-<div class="row">
-    <div class="col">Итого:</div>
-    <div class="col">100500</div>
-</div>
-                        <button class="btn btn-lg btn-dark">Оформить</button>
+                @if(count($cartData)>0)
+
+                    <div class="col-3">
+                        <div class="cart-total">
+                            <div class="row">
+                                <div class="col">Итого:</div>
+                                <div class="col">100500</div>
+                            </div>
+                            <button class="btn btn-lg btn-dark">Оформить</button>
+                        </div>
                     </div>
-                </div>
+                @endif
+
             </div>
 
         </div>
