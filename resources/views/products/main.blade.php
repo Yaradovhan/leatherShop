@@ -78,12 +78,25 @@
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">
-                                    <div class="fav-btn">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="fav-btn">
                                             <span
-                                                class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-heart"
+                                                class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-2x fa-heart"
                                                 data-source="{{ route('product.favorites', $product) }}">
                                             </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-buy ml-5"
+                                                    data-id="{{$product->id}}"
+                                                    data-name="{{$product->title}}"
+                                                    data-source="{{route('product.addToCart')}}"
+                                            >Add to cart
+                                            </button>
+                                        </div>
                                     </div>
+
                                     @auth
                                         <script>
                                             $(document).ready(function () {

@@ -58,6 +58,18 @@ $(function () {
 
         });
 
+        $('.removeAll').click(function () {
+            var items = document.getElementsByClassName('cart-item');
+            function f() {
+
+            }
+            // [].forEach.call(items, function(el) {
+            //     console.log(el);
+            //     // el.remove();
+            // });
+            // console.log()
+        });
+
         function setSum(parent, sum) {
             var sumItem = parent.find('.sum');
             sumItem.val(sum);

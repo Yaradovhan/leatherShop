@@ -8,9 +8,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    Корзина
-                    <a class="ml-5" {{count($cartData)>0 ? '' : 'hidden'}} id="removeAll"><i class="fa fa-remove"></i> Очистить
-                        корзину</a>
+                    <div class="col" >
+                        <h5>Корзина</h5>
+{{--                        <i class="fa fa-border fa-shopping-cart"></i>--}}
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-warning ml-5 removeAll" {{count($cartData)>0 ? '' : 'hidden'}}>
+                        Очистить корзину
+                    </button>
                 </div>
             </div>
             <div class="row">
@@ -18,7 +22,7 @@
                     <div class="col-9">
                         <div class="card-body">
                             <div class="cart-items" id="cart_items">
-                                <div class="cart-item items__head row">
+                                <div class="items__head row">
                                     <div class="col-5">Товар</div>
                                     <div class="col">Цена</div>
                                     <div class="col">Количество</div>
@@ -28,8 +32,8 @@
                                     <div class="cart-item row">
                                         <div class="col-5">
                                             <div class="clear">
-                                                <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded">
-                                                {{$item->name}}
+                                                <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded" style="width: 150px">
+                                                {{$item->description}}
                                             </div>
                                         </div>
                                         <div class="col price-col">{{$item->price}}</div>
@@ -63,7 +67,6 @@
                     </div>
                 @endif
                 @if(count($cartData)>0)
-
                     <div class="col-3 cart-total">
                         <div class="row">
                             <div class="col">Итого:</div>
@@ -74,9 +77,7 @@
                         <button class="btn btn-lg btn-dark">Оформить</button>
                     </div>
                 @endif
-
             </div>
-
         </div>
     </div>
 @endsection
