@@ -34,6 +34,7 @@ Route::group([
 });
 
 Route::get('/cart', 'Cart\CartController@index')->name('cart.index');
+Route::get('/allCartProd', 'Cart\CartController@showAll')->name('cart.all');
 
 Route::group([
     'prefix' => 'cabinet',

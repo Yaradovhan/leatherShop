@@ -14614,6 +14614,15 @@ body {
   text-align: center;
 }
 
+.sum {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px 0;
+  display: inline-block;
+  pointer-events: none;
+  text-align: center;
+}
+
 .plusmin {
   border-radius: 50%;
 }
@@ -14629,7 +14638,6 @@ body {
 
 .cart-total {
   border-left: 4px solid #fab134;
-  background: #f8f8f8;
   padding: 44px 59px 44px 56px;
 }
 

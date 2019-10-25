@@ -37929,6 +37929,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fotorama_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fotorama.js */ "./resources/js/fotorama.js");
 /* harmony import */ var _fotorama_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fotorama_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _cartController_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cartController.js */ "./resources/js/cartController.js");
+/* harmony import */ var _cartController_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cartController_js__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 $(function () {
@@ -37999,83 +38002,7 @@ $(function () {
     })["catch"](function (error) {
       console.error(error);
     });
-  }); // $('.minus-btn').on('click', function (e) {
-  //     e.preventDefault();
-  //     var $this = $(this);
-  //     var $input = $this.closest('div').find('input');
-  //     var value = parseInt($input.val());
-  //
-  //     if (value > 1) {
-  //         value = value - 1;
-  //     } else {
-  //         value = 1;
-  //     }
-  //
-  //     $input.val(value);
-  //
-  // });
-
-  $('.plus-btn').on('click', function (e) {
-    e.preventDefault();
-    var $this = $(this);
-    var input = $this.closest('div').find('input');
-    var value = parseInt(input.val());
-
-    if (value < 100) {
-      value = value + 1;
-    } else {
-      value = 100;
-    }
-
-    input.val(value);
-  }); // $('.cart-item').on('click', function (evt) {
-  //     var elem = evt.target;
-  //     var container = evt.currentTarget;
-  //     // console.log(container);
-  //     var input = container.getElementsByClassName('counter')[0];
-  //     // console.log(input);
-  //     var sum = container.getElementsByClassName('sum')[0];
-  //     var count = parseInt(input.getAttribute('data-count'), 10);
-  //     // console.log(count)
-  //     var price = parseInt(input.getAttribute('data-price'), 10);
-  //     //
-  //     if (elem.classList.contains('minus-btn')) {
-  //         count = count == 1 ? count : (count - 1);
-  //     } else if (elem.classList.contains('plus-btn')){
-  //         count += 1;
-  //     }
-  //     console.log(count);
-  //     // console.log(count)
-  //     input.value = count;
-  //     // sum.innerHTML = price * count;
-  //     // input.setAttribute('data-count', count);
-  // });
-
-  $('.minus-btn').click(function () {
-    // e.preventDefault();
-    var $this = $(this);
-    var input = $this.closest('div').find('input');
-    console.log(input);
-    var value = parseInt(input.val());
-    var price = $(this).parent().parent().parent().parent().find('.price-col').text();
-    var thisParent = $(this).parent().parent().parent().parent();
-    console.log(parseInt(thisParent.closest('div').find('.sum').val()));
-
-    if (value > 1) {
-      value = value - 1;
-    } else {
-      value = 1;
-    }
-
-    input.val(value); // console.log($(this).parent().parent().parent().parent().find('.price-col').text());
-    // console.log( parseInt($(this).next().val()) +  parseInt( $(this).parent().parent().parent().find('.price-col').text()) );
-  }); // document.getElementById('cart_items').addEventListener('click', function (e) {
-  //     e.preventDefault();
-  //     var $this = $(this),
-  //         input = $this.closest('div').find('input'),
-  //         value = parseInt(input.val());
-  //     console.log($this.children());
-  // })
+  });
 });
 
 /***/ }),
@@ -38139,6 +38066,87 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/cartController.js":
+/*!****************************************!*\
+  !*** ./resources/js/cartController.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  if ($('div').hasClass('main-cart-page')) {
+    var onInit = function onInit() {
+      // var thisController = $(this),
+      //     data = document.getElementById('main-cart'),
+      //     allProdUrl = data.dataset.url;
+      //
+      // axios
+      //     .get(allProdUrl)
+      //     .then(function (response) {
+      //         localStorage.setItem('cart', JSON.stringify(response.data)) ;
+      //     });
+      getTotal(); // console.log(JSON.parse(localStorage.getItem('cart')));
+    };
+
+    var getParent = function getParent(thisController) {
+      return thisController.parent().parent().parent().parent();
+    };
+
+    var setSum = function setSum(parent, sum) {
+      var sumItem = parent.find('.sum');
+      sumItem.val(sum);
+    };
+
+    var getTotal = function getTotal() {
+      var total = 0;
+      $('.sum').each(function () {
+        total += parseInt(this.value);
+      });
+      $('#total').text(total);
+    };
+
+    var removeCurProd = function removeCurProd(thisController) {};
+
+    var removeAllProd = function removeAllProd(thisController) {};
+
+    onInit();
+    $('.plus-btn').on('click', function () {
+      var thisController = $(this);
+      var input = thisController.closest('div').find('input');
+      var value = parseInt(input.val());
+      var price = getParent(thisController).find('.price-col').text();
+
+      if (value < 100) {
+        value = value + 1;
+      } else {
+        value = 100;
+      }
+
+      input.val(value);
+      setSum(getParent(thisController), price * value);
+      getTotal();
+    });
+    $('.minus-btn').click(function () {
+      var thisController = $(this);
+      var input = thisController.closest('div').find('input');
+      var value = parseInt(input.val());
+      var price = getParent(thisController).find('.price-col').text();
+
+      if (value > 1) {
+        value = value - 1;
+      } else {
+        value = 1;
+      }
+
+      input.val(value);
+      setSum(getParent(thisController), price * value);
+      getTotal();
+    });
+  }
+});
 
 /***/ }),
 

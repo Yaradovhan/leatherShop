@@ -13,4 +13,10 @@ class CartController extends Controller
         $cartData = $cart->content();
         return view('cart.index', compact('cartData'));
     }
+
+    public function showAll(Cart $cart)
+    {
+        $cartData = $cart->content();
+        return response()->json($cartData);
+    }
 }
