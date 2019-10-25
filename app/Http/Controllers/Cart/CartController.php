@@ -19,4 +19,16 @@ class CartController extends Controller
         $cartData = $cart->content();
         return response()->json($cartData);
     }
+
+    public function removeAll(Cart $cart)
+    {
+        $ret = 1;
+        try{
+            $cart->destroy();
+        } catch (\Exception $e){
+            $ret = 0;
+        }
+
+        return $ret;
+    }
 }

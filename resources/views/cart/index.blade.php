@@ -21,7 +21,7 @@
                 @if(count($cartData)>0)
                     <div class="col-9">
                         <div class="card-body">
-                            <div class="cart-items" id="cart_items">
+                            <div class="cart-items" id="cart_items" data-source="{{route('cart.removeAll')}}">
                                 <div class="items__head row">
                                     <div class="col-5">Товар</div>
                                     <div class="col">Цена</div>

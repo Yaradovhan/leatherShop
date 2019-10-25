@@ -38158,14 +38158,25 @@ $(function () {
       getTotal();
     });
     $('.removeAll').click(function () {
-      var items = document.getElementsByClassName('cart-item');
+      var result = confirm('Очитстить корзину?');
 
-      function f() {} // [].forEach.call(items, function(el) {
-      //     console.log(el);
-      //     // el.remove();
-      // });
-      // console.log()
+      if (result) {
+        var items = document.getElementsByClassName('cart-item');
 
+        if (items.length > 0) {
+          var data = document.getElementById('cart_items'),
+              removeAllUrl = data.dataset.source;
+          axios["delete"](removeAllUrl).then(function (response) {
+            if (response.data === 1) {
+              for (var i = items.length - 1; i >= 0; --i) {
+                items[i].remove();
+              }
+
+              getTotal();
+            }
+          });
+        }
+      }
     });
   }
 });
