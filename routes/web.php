@@ -36,6 +36,7 @@ Route::group([
 Route::get('/cart', 'Cart\CartController@index')->name('cart.index');
 Route::get('/allCartProd', 'Cart\CartController@showAll')->name('cart.all');
 Route::delete('/allCartProd/remove', 'Cart\CartController@removeAll')->name('cart.removeAll');
+Route::delete('/CartProd/remove', 'Cart\CartController@removeOne')->name('cart.removeOne');
 
 
 Route::group([

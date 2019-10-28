@@ -8,75 +8,77 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col" >
+                    <div class="col">
                         <h5>Корзина</h5>
-{{--                        <i class="fa fa-border fa-shopping-cart"></i>--}}
+                        {{--                        <i class="fa fa-border fa-shopping-cart"></i>--}}
                     </div>
-                    <button type="button" class="btn btn-sm btn-outline-warning ml-5 removeAll" {{count($cartData)>0 ? '' : 'hidden'}}>
+                    <button type="button"
+                            class="btn btn-sm btn-outline-warning ml-5" id="removeAll">
                         Очистить корзину
                     </button>
                 </div>
             </div>
-            <div class="row">
-                @if(count($cartData)>0)
-                    <div class="col-9">
-                        <div class="card-body">
-                            <div class="cart-items" id="cart_items" data-source="{{route('cart.removeAll')}}">
-                                <div class="items__head row">
-                                    <div class="col-5">Товар</div>
-                                    <div class="col">Цена</div>
-                                    <div class="col">Количество</div>
-                                    <div class="col">Сумма</div>
-                                </div>
-                                @foreach($cartData as $item)
-                                    <div class="cart-item row">
-                                        <div class="col-5">
-                                            <div class="clear">
-                                                <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded" style="width: 150px">
-                                                {{$item->description}}
-                                            </div>
-                                        </div>
-                                        <div class="col price-col">{{$item->price}}</div>
-                                        <div class="col">
-                                            <div class="quantity">
-                                                <div class="row">
-                                                    <button type="button"
-                                                            class="btn btn-sm btn-outline-dark plus-btn plusmin"><i
-                                                            class="fa fa-plus"></i></button>
-                                                    <input type="text" value="1"
-                                                           class="popup-stuff__count-value counter"
-                                                           data-count="1" data-price="{{$item->price}}" readonly>
-                                                    <button type="button"
-                                                            class="btn btn-sm btn-outline-dark minus-btn plusmin"><i
-                                                            class="fa fa-minus"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <input type="text" value="{{$item->price}}" class="sum" data-sum="1"
-                                                   readonly>
+            <div class="row justify-content-center" id="cartItems">
+                <div class="col-9">
+                    <div class="card-body">
+                        <div class="cart-items" id="cart_items" data-source="{{route('cart.removeAll')}}">
+                            <div class="items__head row">
+                                <div class="col-6">Товар</div>
+                                <div class="col">Цена</div>
+                                <div class="col">Количество</div>
+                                <div class="col" style="text-align: right">Сумма</div>
+                            </div>
+                            @foreach($cartData as $item)
+                                <div class="cart-item row mb-3">
+                                    <div class="col-6">
+                                        <div class="clear">
+                                            <i class="fa fa-remove mr-2 removeItem"
+                                               data-source="{{route('cart.removeOne')}}"
+                                               data-id={{$item->rowId}}
+                                            ></i>
+                                            <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded">
+                                            <p>{{$item->options['description']}}</p>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
+                                    <div class="col price-col">{{$item->price}}</div>
+                                    <div class="col d-flex justify-content-center">
+                                        <div class="quantity">
+                                            <div class="row">
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-dark plus-btn plusmin"><i
+                                                        class="fa fa-plus"></i></button>
+                                                <input type="text" value="1"
+                                                       class="popup-stuff__count-value counter"
+                                                       data-count="1" data-price="{{$item->price}}" readonly>
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-dark minus-btn plusmin"><i
+                                                        class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" value="{{$item->price}}" class="sum" data-sum="1"
+                                               readonly>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                @else
-                    <div class="col">
-                        Товаров нет в корзине
-                    </div>
-                @endif
-                @if(count($cartData)>0)
-                    <div class="col-3 cart-total">
-                        <div class="row">
-                            <div class="col">Итого:</div>
-                            <div class="col">
-                                <span id="total"></span>
-                            </div>
+                </div>
+                <div class="col-3 cart-total ">
+                    <div class="row">
+                        <div class="col d-flex justify-content-center"><p>Итого:</p></div>
+                        <div class="col d-flex justify-content-center">
+                            <span id="total"></span>
                         </div>
-                        <button class="btn btn-lg btn-dark">Оформить</button>
                     </div>
-                @endif
+                    <div class="d-flex justify-content-center">
+                    <button class="btn btn-dark">Оформить</button>
+                    </div>
+                </div>
+            </div>
+            <div id="emptyCart" hidden>
+                Корзина пуста
             </div>
         </div>
     </div>

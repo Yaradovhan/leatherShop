@@ -31,4 +31,19 @@ class CartController extends Controller
 
         return $ret;
     }
+
+    public function removeOne(Request $request, Cart $cart)
+    {
+        $ret = 1;
+        $rowId = $request->id;
+//        dd($request->id);
+        try{
+            $cart->remove($rowId);
+        } catch (\Exception $e){
+            $ret = 0;
+        }
+
+        return $ret;
+    }
+
 }

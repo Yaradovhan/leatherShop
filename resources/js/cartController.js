@@ -4,15 +4,9 @@ $(function () {
         function onInit() {
 
             // var thisController = $(this),
-            //     data = document.getElementById('main-cart'),
-            //     allProdUrl = data.dataset.url;
-            //
-            // axios
-            //     .get(allProdUrl)
-            //     .then(function (response) {
-            //         localStorage.setItem('cart', JSON.stringify(response.data)) ;
-            //     });
-            getTotal();
+
+
+            getItems();
             // console.log(JSON.parse(localStorage.getItem('cart')));
         }
 
@@ -58,9 +52,9 @@ $(function () {
 
         });
 
-        $('.removeAll').click(function () {
+        $('#removeAll').click(function () {
             var result = confirm('Очитстить корзину?');
-            if(result){
+            if (result) {
                 var items = document.getElementsByClassName('cart-item');
                 if (items.length > 0) {
                     var data = document.getElementById('cart_items'),
@@ -72,11 +66,30 @@ $(function () {
                                 for (var i = items.length - 1; i >= 0; --i) {
                                     items[i].remove();
                                 }
-                                getTotal();
+                                getItems();
                             }
                         });
                 }
             }
+        });
+
+        $('.removeItem').on('click', function () {
+            var thisController = $(this),
+                thisRow = thisController.parent().parent().parent(),
+                removeUrl = thisController.data('source'),
+                id = thisController.data('id');
+            axios
+                .delete(removeUrl, {
+                    params: {
+                        id: id
+                    }
+                }).then(function (response) {
+                thisRow.remove();
+                getItems();
+            }).catch(function (error) {
+                console.error(error);
+            });
+
         });
 
         function setSum(parent, sum) {
@@ -98,6 +111,27 @@ $(function () {
 
         function removeAllProd(thisController) {
 
+        }
+
+        function getItems() {
+            var data = document.getElementById('main-cart'),
+                allProdUrl = data.dataset.url,
+                countItems = 0,
+                remAllBtn = document.getElementById('removeAll');
+
+            axios
+                .get(allProdUrl)
+                .then(function (response) {
+                    countItems = Object.keys(response.data).length;
+                    if (countItems === 0) {
+                        let changeDiv = document.getElementById('cartItems'),
+                            headerElem = document.createElement('div');
+                        headerElem.textContent = 'Ваша корзина пустая';
+                        changeDiv.replaceWith(headerElem);
+                        remAllBtn.style.visibility = 'hidden';
+                    }
+                });
+            getTotal();
         }
 
     }

@@ -11,13 +11,11 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
 
-
-
     public function addToCart(Cart $cart, CartRequest $request)
     {
         $id = $request->params['id'];
         $product = Product::findOrFail($id);
-        $res = $cart->add($product->id, $product->title, 1, $product->price);
+        $res = $cart->add($product->id, $product->title, 1, $product->price, 0, ['description' => $product->description]);
 //        dd($res);
 //        dump($cart->content());
     }

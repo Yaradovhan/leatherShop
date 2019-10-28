@@ -116,8 +116,8 @@ body {
     -webkit-appearance: none;
     border: none;
     text-align: center;
-    width: 32px;
-    font-size: 16px;
+    width: 26px;
+    font-size: 14px;
     color: #43484D;
     font-weight: 300;
 }
@@ -142,11 +142,13 @@ body {
     border-width: 1px 0;
     display: inline-block;
     pointer-events: none;
-    text-align: center;
+    text-align: right;
+    width: 100px;
 }
 
 .plusmin {
     border-radius: 50%;
+
 }
 
 .fa {
@@ -165,3 +167,30 @@ body {
     padding: 44px 59px 44px 56px;
     //border-radius: 0 35px 35px 0;
 }
+
+.clear{
+    display: table;
+}
+
+.clear img {
+    width: 145px;
+    text-align: right;
+    line-height: normal;
+}
+
+.clear p {
+    font-size: 10px;
+    //vertical-align: middle;
+    display: table-cell;
+    width: 200px;
+    //white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+}
+
+.removeItem{
+    vertical-align: top;
+    cursor: pointer;
+}
+
