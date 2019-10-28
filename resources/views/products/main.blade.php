@@ -81,10 +81,12 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="fav-btn">
+                                                @auth
                                             <span
                                                 class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-2x fa-heart"
                                                 data-source="{{ route('product.favorites', $product) }}">
                                             </span>
+                                                    @endauth
                                             </div>
                                         </div>
                                         <div class="col-sm-9">
