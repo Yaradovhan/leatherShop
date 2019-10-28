@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h5>Корзина</h5>
+                        <div class="card-header-cart">Корзина</div>
                         {{--                        <i class="fa fa-border fa-shopping-cart"></i>--}}
                     </div>
                     <button type="button"
@@ -36,7 +36,7 @@
                                                data-source="{{route('cart.removeOne')}}"
                                                data-id={{$item->rowId}}
                                             ></i>
-                                            <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded">
+                                            <a href="{{route('product.show', $item->id)}}"><img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded"></a>
                                             <p>{{$item->options['description']}}</p>
                                         </div>
                                     </div>
