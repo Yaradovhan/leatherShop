@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Entity\Product\Product;
+use App\Entity\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -30,8 +31,19 @@ class AuthServiceProvider extends ServiceProvider
 
     public function registerPermissions()
     {
-        Gate::define('admin-panel', function (Product $product) {
-            return $product->isActive();
+        Gate::define('manage-products-categories', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });Gate::define('admin-panel', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+        Gate::define('manage-products', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+        Gate::define('manage-products', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+        Gate::define('manage-users', function (User $user) {
+            return $user->isAdmin();
         });
 
     }

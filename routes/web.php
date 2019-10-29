@@ -58,3 +58,38 @@ Route::group([
     });
 });
 
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'namespace' => 'Admin',
+    'middleware' => ['auth', 'can:admin-panel']
+], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::post('/users/{user}/verify', 'UsersController@verify')->name('users.verify');
+    Route::resource('users', 'UsersController');
+
+    Route::group(['prefix' => 'products', 'as' => 'products.', 'namespace' => 'Products'], function () {
+
+        Route::resource('categories', 'CategoryController');
+
+        Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
+            Route::post('/first', 'CategoryController@first')->name('first');
+            Route::post('/up', 'CategoryController@up')->name('up');
+            Route::post('/down', 'CategoryController@down')->name('down');
+            Route::post('/last', 'CategoryController@last')->name('last');
+            Route::resource('attributes', 'AttributeController')->except('index');
+        });
+
+        Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+            Route::get('/', 'ProductController@index')->name('index');
+            Route::get('/{product}/edit', 'ProductController@editForm')->name('edit');
+            Route::put('/{product}/edit', 'ProductController@edit');
+            Route::get('/{product}/photos', 'ProductController@photosForm')->name('photos');
+            Route::post('/{product}/photos', 'ProductController@photos');
+            Route::get('/{product}/attributes', 'ProductController@attributesForm')->name('attributes');
+            Route::post('/{product}/attributes', 'ProductController@attributes');
+            Route::post('/{product}/moderate', 'ProductController@moderate')->name('moderate');
+            Route::delete('/{advert}/destroy', 'ProductController@destroy')->name('destroy');
+        });
+    });
+});

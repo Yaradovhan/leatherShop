@@ -65,7 +65,8 @@ $(function () {
 
 
     $('.btn-buy').click(function () {
-        var data = $(this).data(),
+        var thisContcroller = $(this),
+            data = thisContcroller.data(),
             url = data.source,
             name = data.name,
             id = data.id;
@@ -76,6 +77,12 @@ $(function () {
                     name: name
                 }
             }).then(function (response) {
+            var button = document.createElement('button');
+            button.type = "button";
+            button.textContent = 'Added to cart';
+            button.setAttribute("class", "btn btn-sm btn-outline-secondary btn-buy ml-5");
+            button.disabled = true;
+            thisContcroller.replaceWith(button);
         }).catch(function (error) {
             console.error(error);
         });

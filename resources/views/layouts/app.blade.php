@@ -7,9 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }}</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-    <!-- Styles -->
+    <!-- Fonts --><!-- Styles -->
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
 
     <script src="{{mix('js/app.js', 'build')}}"></script>

@@ -34,7 +34,10 @@
                                         <div class="clear">
                                             <i class="fa fa-remove mr-2 removeItem"
                                                data-source="{{route('cart.removeOne')}}"
-                                               data-id={{$item->rowId}}
+                                               data-id="{{$item->rowId}}"
+                                               data-toggle="tooltip"
+                                               data-placement="top"
+                                               title="Remove this product"
                                             ></i>
                                             <a href="{{route('product.show', $item->id)}}"><img src="https://s.fotorama.io/1.jpg" class="img-thumbnail rounded"></a>
                                             <p>{{$item->options['description']}}</p>

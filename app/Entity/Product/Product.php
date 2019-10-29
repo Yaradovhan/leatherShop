@@ -4,7 +4,7 @@ namespace App\Entity\Product;
 
 use App\Entity\Category;
 use App\Entity\Product\Comment;
-use App\Entity\Product\Image as _Image;
+use App\Entity\Product\Image as Photo;
 use Illuminate\Database\Eloquent\Model;
 use App\Reatable\Reatable as Rateable;
 
@@ -23,8 +23,8 @@ class Product extends Model
 {
     use Rateable;
 
-    private const STATUS_ACTIVE = 'active';
-    private const STATUS_INACTIVE = 'inactive';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_INACTIVE = 'inactive';
 
     protected $fillable = ['title', 'slug', 'description', 'price', 'status'];
 
@@ -66,13 +66,13 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'category_product','product_id', 'category_id');
     }
-
-    public function photos()
-    {
-        return $this->hasMany(_Image::class, 'advert_id', 'id');
-    }
+//
+//    public function photos()
+//    {
+//        return $this->hasMany(Photo::class, '_id', 'id');
+//    }
 
     /**
      * @param $rating

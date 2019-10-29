@@ -79,24 +79,35 @@
                             <div class="card-footer">
                                 <small class="text-muted">
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <div class="fav-btn">
                                                 @auth
-                                            <span
-                                                class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-2x fa-heart"
-                                                data-source="{{ route('product.favorites', $product) }}">
+                                                    <span
+                                                        class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-2x fa-heart"
+                                                        data-source="{{ route('product.favorites', $product) }}">
                                             </span>
-                                                    @endauth
+                                                @endauth
                                             </div>
                                         </div>
-                                        <div class="col-sm-9">
-                                            <button type="button" class="btn btn-sm btn-outline-primary btn-buy ml-5"
-                                                    data-id="{{$product->id}}"
-                                                    data-name="{{$product->title}}"
-                                                    data-source="{{route('product.addToCart')}}"
-                                            >Add to cart
-                                            </button>
-                                        </div>
+
+                                            <div class="col-sm-10 d-flex justify-content-end">
+                                                @if(!$product->isInCart)
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-primary btn-buy ml-5"
+                                                        data-id="{{$product->id}}"
+                                                        data-name="{{$product->title}}"
+                                                        data-source="{{route('product.addToCart')}}"
+                                                >Add to cart
+                                                </button>
+                                                @else
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary btn-buy ml-5"
+                                                            disabled
+                                                    >Added to cart
+                                                    </button>
+                                                @endif
+                                            </div>
+
                                     </div>
 
                                     @auth

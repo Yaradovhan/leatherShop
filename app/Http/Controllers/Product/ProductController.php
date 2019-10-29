@@ -4,16 +4,22 @@ namespace App\Http\Controllers\Product;
 
 use App\Entity\Product\Product;
 use App\Http\Controllers\Controller;
+use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Cart $cart)
     {
         $products = Product::with('category')->where('status', '=', 'active')->paginate(10);
         $user = Auth::user();
-
+        foreach ($products as &$product) {
+            $res = $cart->search(function ($cartItem) use ($product) {
+                return $cartItem->id === $product->id;
+            });
+            $product['isInCart'] = count($res) > 0 ? true : false;
+        }
         return view('products.main', compact('products', 'user'));
     }
 

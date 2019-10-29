@@ -56,15 +56,46 @@ class User extends Authenticatable
         ]);
     }
 
-
-    public function isWait()
+    public static function new($name, $email): self
     {
-        return $this->status === self::STATUS_WAIT;
+        return static::create([
+            'name' => $name,
+            'last_name' => '',
+            'email' => $email,
+            'password' => bcrypt(Str::random()),
+            'verify_code' => Str::uuid(),
+            'role' => self::ROLE_USER,
+            'status' => self::STATUS_ACTIVE
+        ]);
     }
 
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isModerator(): bool
+    {
+        return $this->role === self::ROLE_MODERATOR;
+    }
+
+    public static function rolesList(): array
+    {
+        return [
+            self::ROLE_ADMIN => 'Admin',
+            self::ROLE_MODERATOR => 'Moderator',
+            self::ROLE_USER => 'User'
+        ];
+    }
+
+    public function isWait()
+    {
+        return $this->status === self::STATUS_WAIT;
     }
 
     public function verify(): void
