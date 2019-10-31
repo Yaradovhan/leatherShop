@@ -31,7 +31,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="status" class="col-form-label">Status</label>
-                            <select id="status" class="form-control" name="status">
+                            <select id="status" class="selectpicker form-control" name="status">
                                 <option value=""></option>
                                 @foreach ($statuses as $value => $label)
                                     <option value="{{ $value }}" {{ $value=== request('status') ? ' selected' : ''
@@ -43,7 +43,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="role" class="col-form-label">Role</label>
-                            <select id="role" class="form-control" name="role">
+                            <select id="role" class="selectpicker form-control" name="role">
                                 <option value=""></option>
                                 @foreach ($roles as $value => $label)
                                     <option value="{{ $value }}" {{ $value=== request('role') ? ' selected' : ''

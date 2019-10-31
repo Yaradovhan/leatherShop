@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "bootstrap-select": "^1.13.12",
         "bootstrap-star-rating": "^4.0.6",
         "font-awesome": "^4.7.0",
         "jquery-bar-rating": "^1.2.2",

@@ -12,8 +12,9 @@ try {
 
     require('bootstrap');
     require('jquery.rateit/scripts/jquery.rateit');
-    require('jquery-bar-rating/jquery.barrating')
-    require('summernote/dist/summernote-bs4')
+    require('jquery-bar-rating/jquery.barrating');
+    require('summernote/dist/summernote-bs4');
+    require('bootstrap-select/dist/js/bootstrap-select.min.js');
 
 } catch (e) {}
 

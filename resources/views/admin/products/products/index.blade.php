@@ -29,7 +29,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="status" class="col-form-label">Status</label>
-                            <select id="status" class="form-control" name="status">
+                            <select id="status" class="selectpicker form-control" name="status">
                                 <option value=""></option>
                                 @foreach ($statuses as $value => $label)
                                     <option value="{{ $value }}" {{ $value=== request('status') ? ' selected' : ''
