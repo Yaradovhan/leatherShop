@@ -64,6 +64,7 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => ['auth', 'can:admin-panel']
 ], function () {
+    Route::post('/ajax/upload/image', 'UploadController@image')->name('ajax.upload.image');
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('/users/{user}/verify', 'UsersController@verify')->name('users.verify');
     Route::resource('users', 'UsersController');
@@ -92,4 +93,14 @@ Route::group([
             Route::delete('/{advert}/destroy', 'ProductController@destroy')->name('destroy');
         });
     });
+
+    Route::resource('pages', 'PageController');
+
+    Route::group(['prefix' => 'pages/{page}', 'as' => 'pages.'], function () {
+        Route::post('/first', 'PageController@first')->name('first');
+        Route::post('/up', 'PageController@up')->name('up');
+        Route::post('/down', 'PageController@down')->name('down');
+        Route::post('/last', 'PageController@last')->name('last');
+    });
 });
+Route::get('/{page_path}', 'PageController@show')->name('page')->where('page_path', '.+');

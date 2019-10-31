@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        App\Providers\CacheServiceProvider::class,
+
 
 
     ],

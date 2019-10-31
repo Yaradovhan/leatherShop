@@ -8,8 +8,11 @@
 @import '~bootstrap/scss/bootstrap';
 //slider
 @import "./fotorama.css";
+//rating star
 @import "~jquery-bar-rating/dist/themes/fontawesome-stars.css";
 @import "~jquery-bar-rating/dist/themes/fontawesome-stars-o.css";
+//summernote
+@import "~summernote/dist/summernote-bs4.css";
 
 .navbar {
     padding: 0.35rem 1rem;

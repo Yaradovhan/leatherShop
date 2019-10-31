@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $categories = Category::defaultOrder()->withDepth()->get();
 
-        return view('admin.products.products.index', compact('categories'));
+        return view('admin.products.categories.index', compact('categories'));
     }
 
     public function create()
@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'parent' => 'nullable|integer|exists:advert_categories,id',
+            'parent' => 'nullable|integer|exists:product_categories,id',
         ]);
 
         $category = Category::create([
@@ -48,17 +48,17 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $parentAttributes = $category->parentAttributes();
-        $attributes = $category->attributes()->orderBy('sort')->get();
+//        $parentAttributes = $category->parentAttributes();
+//        $attributes = $category->attributes()->orderBy('sort')->get();
 
-        return view('admin.adverts.categories.show', compact('category', 'attributes', 'parentAttributes'));
+        return view('admin.products.categories.show', compact('category'));
     }
 
     public function edit(Category $category)
     {
         $parents = Category::defaultOrder()->withDepth()->get();
 
-        return view('admin.adverts.categories.edit', compact('category', 'parents'));
+        return view('admin.products.categories.edit', compact('category', 'parents'));
     }
 
     public function update(Request $request, Category $category)
@@ -66,7 +66,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'parent' => 'nullable|integer|exists:advert_categories,id',
+            'parent' => 'nullable|integer|exists:product_categories,id',
         ]);
 
         $category->update([
@@ -75,7 +75,7 @@ class CategoryController extends Controller
             'parent_id' => $request['parent'],
         ]);
 
-        return redirect()->route('admin.adverts.categories.show', $category);
+        return redirect()->route('admin.products.categories.show', $category);
     }
 
     public function first(Category $category)

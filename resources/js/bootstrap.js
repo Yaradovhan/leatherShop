@@ -13,6 +13,7 @@ try {
     require('bootstrap');
     require('jquery.rateit/scripts/jquery.rateit');
     require('jquery-bar-rating/jquery.barrating')
+    require('summernote/dist/summernote-bs4')
 
 } catch (e) {}
 

@@ -2,7 +2,25 @@ import './bootstrap';
 import './fotorama.js';
 import './cartController.js'
 
-$(function () {
+$(document).ready(function () {
+
+    $('#summernote').summernote({
+        callbacks: {
+            onImageUpload: function (files) {
+                var editor = $(this),
+                    url = editor.data('image-url'),
+                    data = new FormData();
+                data.append('file', files[0]);
+                axios
+                    .post(url, data).then(function (response) {
+                    editor.summernote('insertImage', response.data)
+                        .catch(function (response) {
+                            console.log(response)
+                        })
+                })
+            }
+        }
+    });
 
     $('.product-slider').fotorama({
         shuffle: true,
@@ -87,6 +105,5 @@ $(function () {
             console.error(error);
         });
     });
-
 
 });

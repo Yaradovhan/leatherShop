@@ -26,6 +26,7 @@
         "bootstrap-star-rating": "^4.0.6",
         "font-awesome": "^4.7.0",
         "jquery-bar-rating": "^1.2.2",
-        "jquery.rateit": "^1.1.2"
+        "jquery.rateit": "^1.1.2",
+        "summernote": "^0.8.12"
     }
 }

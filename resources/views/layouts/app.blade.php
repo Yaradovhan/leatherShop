@@ -32,7 +32,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li><a class="nav-link" href="{{route('products')}}">Products</a></li>
                     @foreach (array_slice($menuPages, 0, 3) as $page)
-                        <li><a class="nav-link" href="{{$page->slug}}">{{ $page->name }}</a></li>
+                        <li><a class="nav-link" href="{{ route('page', page_path($page)) }}">{{ $page->getMenuTitle() }}</a></li>
                     @endforeach
                     @if ($morePages = array_slice($menuPages, 3))
                         <li class="nav-item dropdown">
