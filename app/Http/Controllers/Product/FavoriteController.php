@@ -26,11 +26,6 @@ class FavoriteController extends Controller
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());
         }
-
-
-
-//        return redirect()->route('product.show', $product)->with('success', 'Product is added to your favorites');
-//        return back()->with('success', 'Product is added to your favorites');
     }
 
     public function remove(Product $product)
@@ -40,9 +35,5 @@ class FavoriteController extends Controller
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());
         }
-
-//        return redirect()->route('product.show', $product);
-//        return back();
-//        return true;
     }
 }

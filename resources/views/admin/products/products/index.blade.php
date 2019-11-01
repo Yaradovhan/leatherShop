@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <button class="btn btn-success mb-3" id="newPageBtn" data-new-page="{{route('admin.products.products.create')}}"><i class="fa fa-plus"></i>&#8287;Add new page</button>
+    <button class="btn btn-success mb-3" id="newPageBtn" data-new-page="{{route('admin.products.products.create.form')}}"><i class="fa fa-plus"></i>&#8287;Add new product</button>
 
     <table class="table table-striped">
         <thead>
@@ -72,7 +72,7 @@
             <th>Title</th>
             <th>Category</th>
             <th>Status</th>
-            <th></th>
+            <th class="d-flex justify-content-end">Actions</th>
         </tr>
         </thead>
         <tbody>

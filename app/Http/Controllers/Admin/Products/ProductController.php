@@ -6,6 +6,7 @@ use App\Entity\Product\Category;
 use App\Entity\Product\Product;
 use App\Entity\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateProductRequest;
 use App\UseCases\Products\ProductService;
 use Illuminate\Http\Request;
 
@@ -51,8 +52,22 @@ class ProductController extends Controller
         return view('admin.products.products.index', compact('products', 'statuses', 'roles', 'categories'));
     }
 
-    public function create()
+    public function createForm()
     {
-        return view('admin.products.products.create');
+        $categories = Category::defaultOrder()->withDepth()->get();
+        return view('admin.products.products.create', compact('categories'));
+    }
+
+    public function create(CreateProductRequest $request)
+    {
+        try {
+            $product = $this->service->create(
+                $request
+            );
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('product.show', $product)->with('success', 'Product created');
     }
 }

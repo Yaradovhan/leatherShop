@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.adverts.categories._nav')
+    @include('admin.products.categories._nav')
 
-    <form method="POST" action="{{ route('admin.adverts.categories.update', $category) }}">
+    <form method="POST" action="{{ route('admin.products.categories.update', $category) }}">
         @csrf
         @method('PUT')
 
