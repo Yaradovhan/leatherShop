@@ -46,7 +46,6 @@
 
             <div class="row">
                 @foreach($products as $product)
-                    {{--{{dd($product)}}--}}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <a href="{{route('product.show', $product)}}"><img class="card-img-top"

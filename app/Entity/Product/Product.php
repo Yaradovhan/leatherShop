@@ -2,7 +2,6 @@
 
 namespace App\Entity\Product;
 
-use App\Entity\Category;
 use App\Entity\Product\Comment;
 use App\Entity\Product\Image as Photo;
 use Illuminate\Database\Eloquent\Model;
@@ -59,7 +58,7 @@ class Product extends Model
         return $this->status === self::STATUS_ACTIVE;
     }
 
-    public function isInctive(): bool
+    public function isClosed(): bool
     {
         return $this->status === self::STATUS_INACTIVE;
     }

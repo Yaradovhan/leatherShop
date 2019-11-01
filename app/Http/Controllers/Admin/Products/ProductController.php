@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Products;
 
+use App\Entity\Product\Category;
 use App\Entity\Product\Product;
 use App\Entity\User;
 use App\Http\Controllers\Controller;
@@ -31,7 +32,8 @@ class ProductController extends Controller
         }
 
         if (!empty($value = $request->get('category'))) {
-            $query->where('category_id', $value);
+            $query->join('category_product', 'products.id', '=', 'category_product.product_id')
+                ->where('category_product.category_id', $value);
         }
 
         if (!empty($value = $request->get('status'))) {
@@ -44,6 +46,13 @@ class ProductController extends Controller
 
         $roles = User::rolesList();
 
-        return view('admin.products.products.index', compact('products', 'statuses', 'roles'));
+        $categories = Category::defaultOrder()->withDepth()->get();
+
+        return view('admin.products.products.index', compact('products', 'statuses', 'roles', 'categories'));
+    }
+
+    public function create()
+    {
+        return view('admin.products.products.create');
     }
 }

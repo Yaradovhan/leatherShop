@@ -94,16 +94,20 @@ $(document).ready(function () {
                     id: id,
                     name: name
                 }
-            }).then(function (response) {
-            var button = document.createElement('button');
-            button.type = "button";
-            button.textContent = 'Added to cart';
-            button.setAttribute("class", "btn btn-sm btn-outline-secondary btn-buy ml-5");
-            button.disabled = true;
-            thisContcroller.replaceWith(button);
+            }).then(function () {
+            thisContcroller.text('Added to cart');
+            thisContcroller.removeClass("btn-outline-primary btn-primary");
+            thisContcroller.addClass("btn-outline-secondary");
+            thisContcroller.prop('disabled', true);
         }).catch(function (error) {
             console.error(error);
         });
     });
+
+    $('#newPageBtn').click(function (e) {
+        e.preventDefault();
+        var url = $(this).data('new-page');
+        location.assign(url);
+    })
 
 });

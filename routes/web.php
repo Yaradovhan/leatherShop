@@ -83,12 +83,11 @@ Route::group([
 
         Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
             Route::get('/', 'ProductController@index')->name('index');
+            Route::get('/create', 'ProductController@create')->name('create');
             Route::get('/{product}/edit', 'ProductController@editForm')->name('edit');
             Route::put('/{product}/edit', 'ProductController@edit');
             Route::get('/{product}/photos', 'ProductController@photosForm')->name('photos');
             Route::post('/{product}/photos', 'ProductController@photos');
-            Route::get('/{product}/attributes', 'ProductController@attributesForm')->name('attributes');
-            Route::post('/{product}/attributes', 'ProductController@attributes');
             Route::post('/{product}/moderate', 'ProductController@moderate')->name('moderate');
             Route::delete('/{advert}/destroy', 'ProductController@destroy')->name('destroy');
         });

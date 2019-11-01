@@ -20,10 +20,21 @@
                             <input id="name" class="form-control" name="name" value="{{ request('name') }}">
                         </div>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col">
                         <div class="form-group">
                             <label for="category" class="col-form-label">Category</label>
-                            <input id="category" class="form-control" name="category" value="{{ request('category') }}">
+                            <select id="category"
+                                    class="selectpicker form-control {{ $errors->has('category') ? ' is-invalid' : '' }}"
+                                    name="category">
+                                <option value=""></option>
+                                @foreach ($categories as $category)
+                                    <option
+                                        value="{{ $category->id }}" {{ $category->id == request('category') ? ' selected' : '' }}>
+                                        @for ($i = 0; $i < $category->depth; $i++) &mdash; @endfor
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach;
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -33,7 +44,8 @@
                                 <option value=""></option>
                                 @foreach ($statuses as $value => $label)
                                     <option value="{{ $value }}" {{ $value=== request('status') ? ' selected' : ''
-                                    }}>{{ $label }}</option>
+                                    }}>{{ $label }}
+                                    </option>
                                 @endforeach;
                             </select>
                         </div>
@@ -50,6 +62,8 @@
         </div>
     </div>
 
+    <button class="btn btn-success mb-3" id="newPageBtn" data-new-page="{{route('admin.products.products.create')}}"><i class="fa fa-plus"></i>&#8287;Add new page</button>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -58,6 +72,7 @@
             <th>Title</th>
             <th>Category</th>
             <th>Status</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -67,8 +82,11 @@
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->updated_at }}</td>
                 <td><a href="{{ route('product.show', $product) }}" target="_blank">{{ $product->title }}</a></td>
-{{--                <td>{{ $product->category->id }} - {{ $product->category->name }}</td>--}}
-                <td>Category</td>
+                <td>
+                    @foreach($product->category as $category)
+                        <div class="badge badge-dark">{{$category->name}}</div>
+                    @endforeach
+                </td>
                 <td>
                     @if ($product->isActive())
                         <span class="badge badge-primary">Active</span>
@@ -76,11 +94,20 @@
                         <span class="badge badge-secondary">Closed</span>
                     @endif
                 </td>
+                <td class="d-flex justify-content-end">
+                    @if($product->isActive())
+                        <button class="btn btn-sm btn-outline-info mr-1">Set Inactive</button>
+                    @else
+                        <button class="btn btn-sm btn-info mr-1">Set Active</button>
+                    @endif
+                    <button class="btn btn-sm btn-warning mr-1">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
             </tr>
         @endforeach
 
         </tbody>
     </table>
 
-{{--    {{ $product->links() }}--}}
+    {{--    {{ $product->links() }}--}}
 @endsection
