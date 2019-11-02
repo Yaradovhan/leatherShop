@@ -173,27 +173,6 @@ body {
     //border-radius: 0 35px 35px 0;
 }
 
-.clear{
-    display: table;
-}
-
-.clear img {
-    width: 145px;
-    text-align: right;
-    line-height: normal;
-}
-
-.clear p {
-    font-size: 10px;
-    //vertical-align: middle;
-    display: table-cell;
-    width: 200px;
-    //white-space: nowrap;
-    overflow: hidden;
-    vertical-align: top;
-    text-overflow: ellipsis;
-}
-
 .removeItem{
     vertical-align: top;
     cursor: pointer;

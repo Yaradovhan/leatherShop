@@ -45815,6 +45815,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 $(document).ready(function () {
+  $('.toast').toast('show');
   $('#summernote').summernote({
     callbacks: {
       onImageUpload: function onImageUpload(files) {

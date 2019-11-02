@@ -14647,25 +14647,6 @@ body {
   padding: 44px 59px 44px 56px;
 }
 
-.clear {
-  display: table;
-}
-
-.clear img {
-  width: 145px;
-  text-align: right;
-  line-height: normal;
-}
-
-.clear p {
-  font-size: 10px;
-  display: table-cell;
-  width: 200px;
-  overflow: hidden;
-  vertical-align: top;
-  text-overflow: ellipsis;
-}
-
 .removeItem {
   vertical-align: top;
   cursor: pointer;

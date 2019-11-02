@@ -4,6 +4,8 @@ import './cartController.js'
 
 $(document).ready(function () {
 
+    $('.toast').toast('show');
+
     $('#summernote').summernote({
         callbacks: {
             onImageUpload: function (files) {
