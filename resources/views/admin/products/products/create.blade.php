@@ -17,9 +17,14 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="slug" class="col-form-label">Slug</label>
-                <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}"
-                       name="slug"
-                       value="{{ old('slug') }}" required>
+                <div class="input-group mb-2">
+                    <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}"
+                           name="slug"
+                           value="{{ old('slug') }}" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="createSlugBtn">Create slug</button>
+                    </div>
+                </div>
                 @if ($errors->has('slug'))
                     <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
                 @endif

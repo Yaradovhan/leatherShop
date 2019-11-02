@@ -108,6 +108,15 @@ $(document).ready(function () {
         e.preventDefault();
         var url = $(this).data('new-page');
         location.assign(url);
+    });
+
+    $('#createSlugBtn').click(function (e) {
+        e.preventDefault();
+        var slugify = require('slugify/slugify'),
+            title = document.getElementById('title').value,
+            slug = document.getElementById('slug');
+        slug.value = slugify(title, '_');
     })
+
 
 });
