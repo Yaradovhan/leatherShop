@@ -18,6 +18,7 @@ class CartController extends Controller
         $res = $cart->add($product->id, $product->title, 1, $product->price, 0, ['description' => $product->description]);
 //        dd($res);
 //        dump($cart->content());
+        return $res;
     }
 
     public function removeFromCart(Product $product)

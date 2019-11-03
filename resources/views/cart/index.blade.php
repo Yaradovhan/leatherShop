@@ -20,20 +20,19 @@
                 </div>
             </div>
             <div class="row justify-content-center" id="cartItems">
-                <div class="col-9">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
                     <div class="card-body">
                         <div class="cart-items" id="cart_items" data-source="{{route('cart.removeAll')}}">
                             <div class="items__head row">
-                                <div class="col-6">Товар</div>
-                                <div class="col">Цена</div>
-                                <div class="col">Количество</div>
-                                <div class="col" style="text-align: right">Сумма</div>
+                                <div class="col-6 col-md-6">Товар</div>
+                                <div class="col col-md-2">Цена</div>
+                                <div class="col col-md-2">Количество</div>
+                                <div class="col col-md-2" style="text-align: right">Сумма</div>
                             </div>
                             @foreach($cartData as $item)
                                 <div class="cart-item row mb-3">
                                     <div class="col-6">
                                         <div class="media">
-
                                                 <i class="fa fa-remove mr-2 removeItem"
                                                    data-source="{{route('cart.removeOne')}}"
                                                    data-id="{{$item->rowId}}"
@@ -50,7 +49,7 @@
                                         </div>
                                     </div>
                                     <div class="col price-col">{{$item->price}}</div>
-                                    <div class="col d-flex justify-content-center">
+                                    <div class="col col-md-2 d-flex justify-content-center">
                                         <div class="quantity">
                                             <div class="row">
                                                 <button type="button"
@@ -87,10 +86,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 cart-total ">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 cart-total">
                     <div class="row">
-                        <div class="col d-flex justify-content-center"><p>Итого:</p></div>
-                        <div class="col d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center"><p>Итого:</p>
+{{--                        <div class="col d-flex justify-content-center">--}}
                             <span id="total"></span>
                         </div>
                     </div>

@@ -14642,9 +14642,25 @@ body {
   padding: 8px 0 27px;
 }
 
-.cart-total {
-  border-left: 4px solid #fab134;
-  padding: 44px 59px 44px 56px;
+@media (min-width: 992px) {
+  .cart-total {
+    border-left: 4px solid #fab134;
+    padding: 44px 59px 44px 56px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .cart-total {
+    border-top: 4px solid #fab134;
+    padding: 44px 59px 44px 56px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cart-total {
+    border-top: 4px solid #fab134;
+    padding: 44px 59px 44px 56px;
+  }
 }
 
 .removeItem {
@@ -14667,5 +14683,23 @@ body {
 
 .card-header-cart {
   padding-top: 2px;
+}
+
+[data-notify=progressbar] {
+  margin-bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 5px;
+}
+
+div[data-notify=container] {
+  width: 344px;
+  height: 48px;
+}
+
+.alert-dark {
+  background: #323232;
 }
 

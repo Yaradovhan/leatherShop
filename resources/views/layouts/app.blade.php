@@ -93,8 +93,6 @@
     <div class="container">
         {{--        @section('breadcrumbs', Breadcrumbs::render())--}}
         {{--        @yield('breadcrumbs')--}}
-        @include('layouts.partials.toasts')
-
         @include('layouts.partials.flash')
         @yield('content')
     </div>

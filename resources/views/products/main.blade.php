@@ -46,7 +46,7 @@
 
             <div class="row">
                 @foreach($products as $product)
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6 mb-4">
                         <div class="card h-100">
                             <a href="{{route('product.show', $product)}}"><img class="card-img-top"
                                                                                src="http://placehold.it/700x400" alt=""></a>
@@ -78,7 +78,7 @@
                             <div class="card-footer">
                                 <small class="text-muted">
                                     <div class="row">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-6">
                                             <div class="fav-btn">
                                                 @auth
                                                     <span
