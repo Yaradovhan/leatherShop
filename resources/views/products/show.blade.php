@@ -17,6 +17,11 @@
                     <h3 class="card-title">{{$product->title}}</h3>
                     <h4>${{$product->price}}</h4>
                     <p class="card-text">{!! ($product->description) !!}</p>
+
+                    @foreach($product->category as $category)
+                        <p class="badge badge-info">{{$category->name}}</p>
+                    @endforeach
+
                     <select class='rating' id='rating_{{$product->id}}' data-id='rating_{{$product->id}}'
                             data-source="{{ route('product.rating', $product) }}">
                         <option value="1">1</option>

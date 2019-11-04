@@ -51,13 +51,13 @@
                             <a href="{{route('product.show', $product)}}"><img class="card-img-top"
                                                                                src="http://placehold.it/700x400" alt=""></a>
                             <div class="card-body">
-                                <h4 class="card-title">
+                                <h5 class="card-title">
                                     <a href="{{route('product.show', $product)}}">{{$product->title}}</a>
-                                </h4>
+                                </h5>
                                 <h5>{{$product->price}}</h5>
                                 <p class="card-text">
                                     @foreach($product->category as $category)
-                                        <a href="#" class="badge badge-info">{{$category->name}}</a>
+                                        <span class="badge badge-info">{{$category->name}}</span>
                                     @endforeach
                                     {{--                                    {{$product->description}}--}}
                                 </p>

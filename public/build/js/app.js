@@ -45818,10 +45818,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 $(document).ready(function () {
-  var toasts = function toasts() {
-    console.log(1);
-  };
-
   $('#summernote').summernote({
     callbacks: {
       onImageUpload: function onImageUpload(files) {
@@ -45908,27 +45904,10 @@ $(document).ready(function () {
       $.notify({
         message: res.data.name + ' added to your cart'
       }, {
-        type: 'info',
-        placement: {
-          from: "top",
-          align: "right"
-        },
-        offset: 20,
-        spacing: 10,
-        z_index: 1031,
-        delay: 5000,
-        timer: 1000,
-        mouse_over: null,
-        animate: {
-          enter: 'animated fadeInDown',
-          exit: 'animated fadeOutUp'
-        },
-        onShow: null,
-        onShown: null,
-        onClose: null,
-        onClosed: null,
-        icon_type: 'class',
-        template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' + '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' + '<span data-notify="icon"></span> ' + '<span data-notify="title">{1}</span> ' + '<span data-notify="message">{2}</span>' + '<div class="progress" data-notify="progressbar">' + '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' + '</div>' + '<a href="{3}" target="{4}" data-notify="url"></a>' + '</div>'
+        type: 'minimalist',
+        delay: 1000,
+        icon_type: 'image',
+        template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' + '<span data-notify="message">{2}</span>' + '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' + '</div>'
       });
     });
   });
@@ -45959,7 +45938,7 @@ $(document).ready(function () {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/* 
+/*
 * Project: Bootstrap Notify = v3.1.3
 * Description: Turns standard Bootstrap alerts into "Growl-like" notifications.
 * Author: Mouse0270 aka Robert McIntosh
@@ -45978,11 +45957,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   // Create the defaults once
   var defaults = {
     element: 'body',
-    position: null,
     type: "info",
     allow_dismiss: true,
-    newest_on_top: false,
-    showProgressbar: false,
+    newest_on_top: true,
     placement: {
       from: "top",
       align: "right"
@@ -45992,16 +45969,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     z_index: 1031,
     delay: 5000,
     timer: 1000,
-    url_target: '_blank',
-    mouse_over: null,
     animate: {
       enter: 'animated fadeInDown',
       exit: 'animated fadeOutUp'
     },
-    onShow: null,
-    onShown: null,
-    onClose: null,
-    onClosed: null,
     icon_type: 'class',
     template: '<div data-notify="container" class="col-xs-11 col-sm-4 alert alert-{0}" role="alert"><button type="button" aria-hidden="true" class="close" data-notify="dismiss">&times;</button><span data-notify="icon"></span> <span data-notify="title">{1}</span> <span data-notify="message">{2}</span><div class="progress" data-notify="progressbar"><div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div></div><a href="{3}" target="{4}" data-notify="url"></a></div>'
   };
