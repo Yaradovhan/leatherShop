@@ -4,6 +4,8 @@ namespace App\Entity\Product;
 
 use App\Entity\Product\Comment;
 use App\Entity\Product\Image as Photo;
+use Gloudemans\Shoppingcart\Cart;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Reatable\Reatable as Rateable;
 
@@ -65,7 +67,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsToMany(Category::class, 'category_product','product_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 //
 //    public function photos()
@@ -90,6 +92,18 @@ class Product extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
+    public function isInCart($product, Cart $cart)
+    {
+        $res = $cart->search(function ($cartItem) use ($product) {
+            return $cartItem->id === $product->id;
+        });
+
+        $product['isInCart'] = count($res) > 0 ? true : false;
+
+        return $product;
+
     }
 
 }

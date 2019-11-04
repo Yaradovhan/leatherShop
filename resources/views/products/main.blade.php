@@ -46,7 +46,7 @@
 
             <div class="row">
                 @foreach($products as $product)
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-6 mb-4">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
                         <div class="card h-100">
                             <a href="{{route('product.show', $product)}}"><img class="card-img-top"
                                                                                src="http://placehold.it/700x400" alt=""></a>
@@ -78,34 +78,34 @@
                             <div class="card-footer">
                                 <small class="text-muted">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-3">
                                             <div class="fav-btn">
                                                 @auth
                                                     <span
                                                         class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-2x fa-heart"
                                                         data-source="{{ route('product.favorites', $product) }}">
-                                            </span>
+                                                                            </span>
                                                 @endauth
                                             </div>
                                         </div>
 
-                                            <div class="col-sm-10 d-flex justify-content-end">
-                                                @if(!$product->isInCart)
+                                        <div class="col d-flex justify-content-end">
+                                            @if(!$product->isInCart)
                                                 <button type="button"
-                                                        class="btn btn-sm btn-outline-primary btn-buy ml-5"
+                                                        class="btn btn-sm btn-outline-primary btn-buy"
                                                         data-id="{{$product->id}}"
                                                         data-name="{{$product->title}}"
                                                         data-source="{{route('product.addToCart')}}"
                                                 >Add to cart
                                                 </button>
-                                                @else
-                                                    <button type="button"
-                                                            class="btn btn-sm btn-outline-secondary btn-buy ml-5"
-                                                            disabled
-                                                    >Added to cart
-                                                    </button>
-                                                @endif
-                                            </div>
+                                            @else
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-secondary btn-buy"
+                                                        disabled
+                                                >Added to cart
+                                                </button>
+                                            @endif
+                                        </div>
 
                                     </div>
 
@@ -120,6 +120,7 @@
                                         </script>
                                     @endauth
                                 </small>
+
                             </div>
                         </div>
                     </div>

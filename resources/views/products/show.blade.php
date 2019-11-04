@@ -34,12 +34,21 @@
                         <div class="col-auto mr-auto">Average Rating : <span
                                 id='avgrating_{{$product->id}}'>{{substr($product->averageRating,0,3)}}</span></div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary btn-buy"
-                                    data-id="{{$product->id}}"
-                                    data-name="{{$product->title}}"
-                                    data-source="{{route('product.addToCart')}}"
-                            >Add to cart
-                            </button>
+                            @if(!$product->isInCart)
+                                <button type="button"
+                                        class="btn btn btn-outline-primary btn-buy"
+                                        data-id="{{$product->id}}"
+                                        data-name="{{$product->title}}"
+                                        data-source="{{route('product.addToCart')}}"
+                                >Add to cart
+                                </button>
+                            @else
+                                <button type="button"
+                                        class="btn btn btn-outline-secondary btn-buy"
+                                        disabled
+                                >Added to cart
+                                </button>
+                            @endif
                         </div>
                     </div>
 

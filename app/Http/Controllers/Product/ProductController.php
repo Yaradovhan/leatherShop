@@ -10,26 +10,24 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index(Cart $cart)
+    public function index(Cart $cart, Product $product)
     {
         $products = Product::with('category')->where('status', '=', 'active')->paginate(10);
         $user = Auth::user();
-        foreach ($products as &$product) {
-            $res = $cart->search(function ($cartItem) use ($product) {
-                return $cartItem->id === $product->id;
-            });
-            $product['isInCart'] = count($res) > 0 ? true : false;
+        foreach ($products as $product){
+            $product->isInCart($product, $cart);
         }
         return view('products.main', compact('products', 'user'));
     }
 
-    public function show(Product $product)
+    public function show(Cart $cart, Product $product)
     {
         if (!($product->isActive())) {
             abort(404);
         }
 
         $user = Auth::user();
+        $product->isInCart($product, $cart);
 
         return view('products.show', compact('product', 'user'));
     }
