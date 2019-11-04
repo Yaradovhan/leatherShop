@@ -1,7 +1,8 @@
 import './bootstrap';
 import './fotorama.js';
 import './cartController.js';
-import './bootstrap-notify'
+import './bootstrap-notify';
+import './admin/productsController';
 
 $(document).ready(function () {
 

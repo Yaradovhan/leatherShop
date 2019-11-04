@@ -45796,6 +45796,24 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/admin/productsController.js":
+/*!**************************************************!*\
+  !*** ./resources/js/admin/productsController.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.setActivityBtn').click(function (e) {
+    var thisController = $(this),
+        thisId = thisController.data('id');
+    console.log(thisController.data('id'));
+    e.preventDefault();
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -45813,6 +45831,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cartController_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_cartController_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _bootstrap_notify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bootstrap-notify */ "./resources/js/bootstrap-notify.js");
 /* harmony import */ var _bootstrap_notify__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_bootstrap_notify__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _admin_productsController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin/productsController */ "./resources/js/admin/productsController.js");
+/* harmony import */ var _admin_productsController__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_admin_productsController__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 

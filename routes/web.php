@@ -86,6 +86,8 @@ Route::group([
             Route::get('/create', 'ProductController@createForm')->name('create.form');
             Route::post('/create', 'ProductController@create')->name('create');
             Route::get('/{product}/edit', 'ProductController@editForm')->name('edit');
+            Route::put('/{product}/set/active', 'ProductController@setActive')->name('set.active');
+            Route::put('/{product}/set/inactive', 'ProductController@setInactive')->name('set.inactive');
             Route::put('/{product}/edit', 'ProductController@edit');
             Route::get('/{product}/photos', 'ProductController@photosForm')->name('photos');
             Route::post('/{product}/photos', 'ProductController@photos');

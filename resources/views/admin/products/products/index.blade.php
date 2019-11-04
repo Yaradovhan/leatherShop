@@ -96,9 +96,9 @@
                 </td>
                 <td class="d-flex justify-content-end">
                     @if($product->isActive())
-                        <button class="btn btn-sm btn-outline-info mr-1">Set Inactive</button>
+                        <button class="btn btn-sm btn-outline-info mr-1 setActivityBtn" data-id="{{$product->id}}">Set Inactive</button>
                     @else
-                        <button class="btn btn-sm btn-info mr-1">Set Active</button>
+                        <button class="btn btn-sm btn-info mr-1 setActivityBtn" data-id="{{$product->id}}">Set Active</button>
                     @endif
                     <button class="btn btn-sm btn-warning mr-1">Edit</button>
                     <button class="btn btn-sm btn-danger">Delete</button>

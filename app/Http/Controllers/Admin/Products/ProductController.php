@@ -70,4 +70,15 @@ class ProductController extends Controller
 
         return redirect()->route('product.show', $product)->with('success', 'Product created');
     }
+
+    public function setActive(Product $product)
+    {
+        dd($product);
+
+    }
+    public function setInctive(Product $product)
+    {
+        dd($product);
+
+    }
 }

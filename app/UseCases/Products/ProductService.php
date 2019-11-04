@@ -57,4 +57,13 @@ class ProductService
             'status'
         ]));
     }
+
+    public function setActive(Product $product)
+    {
+
+    }
+    public function setInctive(Product $product)
+    {
+
+    }
 }
