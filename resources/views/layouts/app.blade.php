@@ -49,7 +49,7 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a href="{{route('cart.index')}}"  class="nav-link"><i class="fa fa-2x fa-shopping-cart"></i></a>
+                        <a href="{{route('cart.index')}}" class="nav-link"><i class="fa fa-2x fa-shopping-cart"></i></a>
                     </li>
                     @guest
                         <li class="nav-item">
@@ -91,14 +91,13 @@
 
 <main class="app-content">
     <div class="container">
-        {{--        @section('breadcrumbs', Breadcrumbs::render())--}}
-        {{--        @yield('breadcrumbs')--}}
+                @section('breadcrumbs', Breadcrumbs::render())
+        @yield('breadcrumbs')
         @include('layouts.partials.flash')
         @yield('content')
     </div>
 
 </main>
-
 
 
 <footer>
