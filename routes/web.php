@@ -4,7 +4,7 @@ Auth::routes();
 Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/admin/home', 'AdminController@index')->name('admin.home');
+//Route::get('/admin/home', 'AdminController@index')->name('admin.home');
 
 Route::get('/products', 'Product\ProductController@index')->name('products');
 Route::get('/products/{product}', 'Product\ProductController@show')->name('product.show');
