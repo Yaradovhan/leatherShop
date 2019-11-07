@@ -68,6 +68,16 @@ Breadcrumbs::register('admin.products.products.index', function (Crumbs $crumbs)
     $crumbs->push('Products', route('admin.products.products.index'));
 });
 
+Breadcrumbs::register('admin.products.products.create.form', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.products.products.index');
+    $crumbs->push('Create Product', route('admin.products.products.create.form'));
+});
+
+Breadcrumbs::register('admin.products.products.editForm', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.products.products.index');
+    $crumbs->push($product->title, route('admin.products.products.editForm', $product));
+});
+
 Breadcrumbs::register('admin.products.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
     $crumbs->push('Categories', route('admin.products.categories.index'));
@@ -112,4 +122,12 @@ Breadcrumbs::register('admin.users.index', function (Crumbs $crumbs) {
 Breadcrumbs::register('cart.index', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push('Cart', route('cart.index'));
+});
+
+//Cabinet
+
+
+Breadcrumbs::register('cabinet.home', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Cabinet', route('cabinet.home'));
 });

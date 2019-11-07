@@ -100,7 +100,8 @@
                     @else
                         <button class="btn btn-sm btn-info mr-1 setActivityBtn" data-id="{{$product->id}}">Set Active</button>
                     @endif
-                    <button class="btn btn-sm btn-warning mr-1">Edit</button>
+{{--                    <button class="btn btn-sm btn-warning mr-1">Edit</button>--}}
+                        <a href="{{route('admin.products.products.editForm', $product)}}" class="btn btn-sm btn-warning mr-1">Edit</a>
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </td>
             </tr>

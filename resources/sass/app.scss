@@ -261,3 +261,12 @@ body {
     background: none;
     margin-bottom: 0rem;
 }
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}
+
+.breadcrumb {
+    background: none;
+    padding: 0;
+}

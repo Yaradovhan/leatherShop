@@ -6,17 +6,20 @@ namespace App\UseCases\Products;
 
 use App\Entity\Product\Category;
 use App\Entity\Product\Product;
-use App\Http\Requests\Admin\CreateProductRequest;
+use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\DB;
 
 class ProductService
 {
-    public function create(CreateProductRequest $request) :Product
+    public function create(ProductRequest $request) :Product
     {
+        $categories = [];
         /** @var Category $category */
-        $category = Category::find($request['category']);
+        foreach ($request['category'] as $cat_id){
+            $categories[] = Category::find($cat_id);
+        }
 
-        return DB::transaction(function () use ($request, $category) {
+        return DB::transaction(function () use ($request, $categories) {
 
             /* @var Product $product */
             $product = Product::make([
@@ -28,8 +31,10 @@ class ProductService
             ]);
 
             $product->saveOrFail();
-            if($category !== null){
-                $product->category()->attach($category);
+            if(array_filter($categories) !== null){
+                foreach ($categories as $category){
+                    $product->category()->attach($category);
+                }
             }
 
             return $product;
@@ -46,9 +51,9 @@ class ProductService
 
     }
 
-    public function edit($id, EditRequest $request): void
+    public function edit(Product $product, ProductRequest $request): Product
     {
-        $product = $this->getPtoduct($id);
+
         $product->update($request->only([
             'title',
             'slug',
@@ -56,6 +61,16 @@ class ProductService
             'price',
             'status'
         ]));
+
+        if($request['category'] !== null){
+           $product->category()->detach();
+            foreach ($request['category'] as $category){
+                $product->category()->attach($category);
+            }
+        }
+
+        return $product;
+
     }
 
     public function setActive(Product $product)
