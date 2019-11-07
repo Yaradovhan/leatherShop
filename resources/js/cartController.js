@@ -125,8 +125,16 @@ $(function () {
                     countItems = Object.keys(response.data).length;
                     if (countItems === 0) {
                         let changeDiv = document.getElementById('cartItems'),
-                            headerElem = document.createElement('div');
-                        headerElem.textContent = 'Ваша корзина пустая';
+                            empty = '' +
+                                '<div class="jumbotron jumbotron-fluid">' +
+                                '<div class="container">' +
+                                '<img src= "http://localhost:8000/storage/images/cart/empty.svg" class="rounded mx-auto d-block img-fluid" style="width: 10rem">' +
+                                '<p class="text-center mt-2">Ваша корзина пуста</p>' +
+                                '</div>' +
+                                '</div>',
+                        headerElem = document.createElement('div');
+                        headerElem.innerHTML = empty;
+                        // headerElem.textContent = 'Ваша корзина пустая';
                         changeDiv.replaceWith(headerElem);
                         remAllBtn.style.visibility = 'hidden';
                     }

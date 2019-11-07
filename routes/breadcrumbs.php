@@ -106,3 +106,10 @@ Breadcrumbs::register('admin.users.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
     $crumbs->push('Users', route('admin.users.index'));
 });
+
+//Cart
+
+Breadcrumbs::register('cart.index', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Cart', route('cart.index'));
+});
