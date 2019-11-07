@@ -19,6 +19,7 @@ use App\Reatable\Reatable as Rateable;
  * @property string status
  * @package App\Entity\Product
  * @package  App\Reatable\Reatable
+ * @method static findOrFail($id)
  */
 class Product extends Model
 {

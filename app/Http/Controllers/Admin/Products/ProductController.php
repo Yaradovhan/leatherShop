@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
 use App\UseCases\Products\ProductService;
+use Hamcrest\Thingy;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -61,9 +62,7 @@ class ProductController extends Controller
     public function create(ProductRequest $request)
     {
         try {
-            $product = $this->service->create(
-                $request
-            );
+            $product = $this->service->create($request);
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -71,27 +70,23 @@ class ProductController extends Controller
         return redirect()->route('product.show', $product)->with('success', 'Product created');
     }
 
-    public function setActive(Product $product)
+    public function setStatus(Request $request)
     {
-        dd($product);
-
+        $productId = Product::findOrFail($request->params['id']);
+        return $this->service->setStatus($productId);
     }
-    public function setInctive(Product $product)
-    {
-        dd($product);
 
-    }
 
     public function editForm(Product $product)
     {
         $productCategories = $product->category()->get();
         $selected = [];
 
-        foreach ($productCategories as $productCategory){
+        foreach ($productCategories as $productCategory) {
             $selected[] = $productCategory->id;
         }
         $categories = Category::defaultOrder()->withDepth()->get();
-        return view('admin.products.products.edit', compact('product', 'productCategories','categories', 'selected'));
+        return view('admin.products.products.edit', compact('product', 'productCategories', 'categories', 'selected'));
     }
 
     public function edit(ProductRequest $request, Product $product)
@@ -103,5 +98,17 @@ class ProductController extends Controller
         }
 
         return redirect()->route('product.show', $product)->with('success', 'Product updated');
+    }
+
+    public function destroy(Product $product)
+    {
+        $name = $product->title;
+        try {
+            $this->service->delete($product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return back()->with('success', 'Product ' . $name . ' deleted');
     }
 }

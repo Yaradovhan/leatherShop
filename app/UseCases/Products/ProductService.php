@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class ProductService
 {
-    public function create(ProductRequest $request) :Product
+    public function create(ProductRequest $request): Product
     {
         $categories = [];
         /** @var Category $category */
-        foreach ($request['category'] as $cat_id){
+        foreach ($request['category'] as $cat_id) {
             $categories[] = Category::find($cat_id);
         }
 
@@ -31,8 +31,8 @@ class ProductService
             ]);
 
             $product->saveOrFail();
-            if(array_filter($categories) !== null){
-                foreach ($categories as $category){
+            if (array_filter($categories) !== null) {
+                foreach ($categories as $category) {
                     $product->category()->attach($category);
                 }
             }
@@ -41,7 +41,7 @@ class ProductService
         });
     }
 
-    public function getPtoduct($id)
+    public function getPtoduct($id): Product
     {
         return Product::findOrFail($id);
     }
@@ -62,9 +62,9 @@ class ProductService
             'status'
         ]));
 
-        if($request['category'] !== null){
-           $product->category()->detach();
-            foreach ($request['category'] as $category){
+        if ($request['category'] !== null) {
+            $product->category()->detach();
+            foreach ($request['category'] as $category) {
                 $product->category()->attach($category);
             }
         }
@@ -73,12 +73,26 @@ class ProductService
 
     }
 
-    public function setActive(Product $product)
+    public function setStatus(Product $product): Product
     {
-
+        $curStatus = $product->status;
+        switch ($curStatus) {
+            case 'active':
+                $product->update(['status' => 'inactive']);
+                break;
+            case 'inactive':
+                $product->update(['status' => 'active']);
+                break;
+        }
+        return $product;
     }
-    public function setInctive(Product $product)
-    {
 
+    public function delete(Product $product)
+    {
+        try {
+            $product->delete();
+        } catch (\Exception $e) {
+            return redirect()->route('admin.products.products.index')->with('error', $e->getMessage());
+        }
     }
 }

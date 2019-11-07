@@ -83,12 +83,11 @@ Route::group([
             Route::post('/create', 'ProductController@create')->name('create');
             Route::get('/{product}/edit', 'ProductController@editForm')->name('editForm');
             Route::post('/{product}/edit', 'ProductController@edit')->name('edit');
-            Route::put('/{product}/set/active', 'ProductController@setActive')->name('set.active');
-            Route::put('/{product}/set/inactive', 'ProductController@setInactive')->name('set.inactive');
+            Route::put('/set/status', 'ProductController@setStatus')->name('set.status');
             Route::get('/{product}/photos', 'ProductController@photosForm')->name('photos');
             Route::post('/{product}/photos', 'ProductController@photos');
             Route::post('/{product}/moderate', 'ProductController@moderate')->name('moderate');
-            Route::delete('/{advert}/destroy', 'ProductController@destroy')->name('destroy');
+            Route::delete('/{product}/destroy', 'ProductController@destroy')->name('destroy');
         });
     });
 
