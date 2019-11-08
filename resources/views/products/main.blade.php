@@ -59,7 +59,6 @@
                                     @foreach($product->category as $category)
                                         <span class="badge badge-info">{{$category->name}}</span>
                                     @endforeach
-                                    {{--                                    {{$product->description}}--}}
                                 </p>
                                 <select class='main_rating' id='main_rating_{{$product->id}}'>
                                     <option value="1">1</option>
@@ -84,7 +83,7 @@
                                                     <span
                                                         class="favme favme_{{$product->id}} dashicons dashicons-heart fa fa-2x fa-heart"
                                                         data-source="{{ route('product.favorites', $product) }}">
-                                                                            </span>
+                                                     </span>
                                                 @endauth
                                             </div>
                                         </div>
@@ -129,5 +128,3 @@
         </div>
     </div>
 @endsection
-
-

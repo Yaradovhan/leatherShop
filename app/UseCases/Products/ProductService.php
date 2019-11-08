@@ -78,10 +78,10 @@ class ProductService
         $curStatus = $product->status;
         switch ($curStatus) {
             case 'active':
-                $product->update(['status' => 'inactive']);
+                $product->inactive();
                 break;
             case 'inactive':
-                $product->update(['status' => 'active']);
+                $product->active();
                 break;
         }
         return $product;

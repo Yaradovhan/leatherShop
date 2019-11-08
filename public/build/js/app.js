@@ -45804,16 +45804,26 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 $(function () {
-  $('.setActivityBtn').click(function (e) {
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  var style = {
+    'active': 'badge-primary',
+    'inactive': 'badge-secondary'
+  };
+  $('.changeStatusBtn').click(function (e) {
     var thisController = $(this),
         thisId = thisController.parent().data('id'),
-        thisUrl = thisController.parent().data('url');
+        thisUrl = thisController.parent().data('url'),
+        statusItem = thisController.closest("tr").find("td:eq(4)");
     axios.put(thisUrl, {
       params: {
         id: thisId
       }
     }).then(function (res) {
-      console.log(res.data);
+      statusItem.find('span').removeClass('badge-primary badge-secondary').addClass(style[res.data.status]);
+      statusItem.find('span').text(capitalizeFirstLetter(res.data.status)); // statusItem.find('span');
     });
   });
 });
@@ -48627,8 +48637,8 @@ fotoramaVersion = "4.6.4", function (a, b, c, d, e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/dovhan/www/leatherShop/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/dovhan/www/leatherShop/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/yara/www/leatherShop/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/yara/www/leatherShop/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

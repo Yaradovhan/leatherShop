@@ -97,15 +97,10 @@
                         <span class="badge badge-secondary">Closed</span>
                     @endif
                 </td>
-                <td class="d-flex justify-content-end" data-id="{{$product->id}}" data-url="{{route('admin.products.products.set.status', $product)}}">
-                    @if($product->isActive())
-                        <button class="btn btn-sm btn-outline-info mr-1 setActivityBtn">Set
-                            Inactive
-                        </button>
-                    @else
-                        <button class="btn btn-sm btn-info mr-1 setActivityBtn" data-id="{{$product->id}}">Set Active
-                        </button>
-                    @endif
+                <td class="d-flex justify-content-end" data-id="{{$product->id}}"
+                    data-url="{{route('admin.products.products.set.status', $product)}}">
+                    <button class="btn btn-sm btn-outline-info mr-1 changeStatusBtn" data-id="{{$product->id}}">Change the status
+                    </button>
                     <a href="{{route('admin.products.products.editForm', $product)}}"
                        class="btn btn-sm btn-warning mr-1">Edit</a>
                     <form action="{{route('admin.products.products.destroy', $product)}}" method="post">
