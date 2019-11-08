@@ -2,6 +2,7 @@
 
 use App\Entity\Page;
 use App\Entity\Product\Product;
+use App\Entity\User;
 use App\Http\Router\PagePath;
 use App\Entity\Product\Category;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
@@ -115,6 +116,16 @@ Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) 
 Breadcrumbs::register('admin.users.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
     $crumbs->push('Users', route('admin.users.index'));
+});
+
+Breadcrumbs::register('admin.users.show', function (Crumbs $crumbs, User $user) {
+    $crumbs->parent('admin.users.index');
+    $crumbs->push($user->getFullName(), route('admin.users.show', $user));
+});
+
+Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) {
+    $crumbs->parent('admin.users.show', $user);
+    $crumbs->push($user->getFullName(), route('admin.users.edit', $user));
 });
 
 //Cart

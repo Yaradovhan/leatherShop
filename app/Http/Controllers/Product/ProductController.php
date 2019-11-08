@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index(Cart $cart, Product $product)
     {
-        $products = Product::with('category')->where('status', '=', 'active')->paginate(10);
+        $products = Product::with('category')->where('status', '=', 'active')->paginate(12);
         $user = Auth::user();
         foreach ($products as $product){
             $product->isInCart($product, $cart);

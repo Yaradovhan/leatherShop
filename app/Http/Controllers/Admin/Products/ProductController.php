@@ -6,6 +6,7 @@ use App\Entity\Product\Category;
 use App\Entity\Product\Product;
 use App\Entity\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ImagesRequest;
 use App\Http\Requests\Admin\ProductRequest;
 use App\UseCases\Products\ProductService;
 use Hamcrest\Thingy;
@@ -97,7 +98,7 @@ class ProductController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('product.show', $product)->with('success', 'Product updated');
+        return redirect()->back()->with('success', 'Product updated');
     }
 
     public function destroy(Product $product)
@@ -110,5 +111,16 @@ class ProductController extends Controller
         }
 
         return back()->with('success', 'Product ' . $name . ' deleted');
+    }
+
+    public function images(ImagesRequest $request, Product $product)
+    {
+        try {
+            $this->service->addImages($product->id, $request);
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('admin.products.products.edit', $product);
     }
 }

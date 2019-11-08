@@ -33,18 +33,18 @@
                                 <div class="cart-item row mb-3">
                                     <div class="col-6">
                                         <div class="media">
-                                                <i class="fa fa-remove mr-2 removeItem"
-                                                   data-source="{{route('cart.removeOne')}}"
-                                                   data-id="{{$item->rowId}}"
-                                                   data-toggle="tooltip"
-                                                   data-placement="top"
-                                                   title="Remove this product"
-                                                ></i>
-                                                <a href="{{route('product.show', $item->id)}}"><img
-                                                       class="mr-2" src="https://s.fotorama.io/1.jpg" style="width: 145px"></a>
-                                                <div class="media-body">
-                                                    {!! ($item->options['description']) !!}
-                                                </div>
+                                            <i class="fa fa-remove mr-2 removeItem"
+                                               data-source="{{route('cart.removeOne')}}"
+                                               data-id="{{$item->rowId}}"
+                                               data-toggle="tooltip"
+                                               data-placement="top"
+                                               title="Remove this product"
+                                            ></i>
+                                            <a href="{{route('product.show', $item->id)}}"><img
+                                                    class="mr-2" src="https://s.fotorama.io/1.jpg" style="width: 145px"></a>
+                                            <div  class="media-body">
+                                                {!! ($item->options['description']) !!}
+                                            </div>
 
                                         </div>
                                     </div>
@@ -70,26 +70,26 @@
                                     </div>
                                 </div>
                             @endforeach
-{{--                            <div class="col-6">--}}
-{{--                                <div class="media">--}}
-{{--                                    <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail mr-3" alt="..."--}}
-{{--                                         style="width: 100px;">--}}
-{{--                                    <div class="media-body">--}}
-{{--                                        <h5 class="mt-0">Media heading</h5>--}}
-{{--                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--}}
-{{--                                        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra--}}
-{{--                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue--}}
-{{--                                        felis in faucibus.--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="col-6">--}}
+                            {{--                                <div class="media">--}}
+                            {{--                                    <img src="https://s.fotorama.io/1.jpg" class="img-thumbnail mr-3" alt="..."--}}
+                            {{--                                         style="width: 100px;">--}}
+                            {{--                                    <div class="media-body">--}}
+                            {{--                                        <h5 class="mt-0">Media heading</h5>--}}
+                            {{--                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--}}
+                            {{--                                        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra--}}
+                            {{--                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue--}}
+                            {{--                                        felis in faucibus.--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
                 <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 cart-total">
                     <div class="row">
                         <div class="col d-flex justify-content-center"><p>Итого:</p>
-{{--                        <div class="col d-flex justify-content-center">--}}
+                            {{--                        <div class="col d-flex justify-content-center">--}}
                             <span id="total"></span>
                         </div>
                     </div>

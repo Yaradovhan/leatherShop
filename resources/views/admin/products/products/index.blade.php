@@ -115,5 +115,5 @@
         </tbody>
     </table>
 
-    {{--    {{ $product->links() }}--}}
+        {{ $products->links() }}
 @endsection

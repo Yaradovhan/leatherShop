@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <label for="parent" class="col-form-label">Parent</label>
-            <select id="parent" class="form-control{{ $errors->has('parent') ? ' is-invalid' : '' }}" name="parent">
+            <select id="parent" class="form-control{{ $errors->has('parent') ? ' is-invalid' : '' }} selectpicker" name="parent">
                 <option value=""></option>
                 @foreach ($parents as $parent)
                     <option value="{{ $parent->id }}"{{ $parent->id == old('parent', $page->parent_id) ? ' selected' : '' }}>

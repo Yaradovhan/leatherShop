@@ -90,7 +90,6 @@ class UsersController extends Controller
 
         $roles = User::rolesList();;
 
-//        return view('admin.users.edit', compact('user', 'statuses'));
         return view('admin.users.edit', compact('user', 'roles', 'statuses'));
     }
 

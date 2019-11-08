@@ -119,12 +119,12 @@
                                         </script>
                                     @endauth
                                 </small>
-
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
+            {{$products->onEachSide(1)->links()}}
         </div>
     </div>
 @endsection

@@ -45823,7 +45823,7 @@ $(function () {
       }
     }).then(function (res) {
       statusItem.find('span').removeClass('badge-primary badge-secondary').addClass(style[res.data.status]);
-      statusItem.find('span').text(capitalizeFirstLetter(res.data.status)); // statusItem.find('span');
+      statusItem.find('span').text(capitalizeFirstLetter(res.data.status));
     });
   });
 });

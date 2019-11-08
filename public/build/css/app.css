@@ -14748,3 +14748,10 @@ body {
   padding: 0;
 }
 
+.media-body {
+  width: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+

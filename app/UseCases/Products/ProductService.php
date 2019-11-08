@@ -6,6 +6,7 @@ namespace App\UseCases\Products;
 
 use App\Entity\Product\Category;
 use App\Entity\Product\Product;
+use App\Http\Requests\Admin\ImagesRequest;
 use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -46,9 +47,17 @@ class ProductService
         return Product::findOrFail($id);
     }
 
-    public function addPhoto()
+    public function addImages($id, ImagesRequest $request)
     {
+        $product = $this->getPtoduct($id);
 
+        DB::transaction(function () use ($request, $product) {
+            foreach ($request['files'] as $file) {
+
+                $product->images()->create(['file' => $file->store('adverts/'.$product->id, 'public')]);
+            }
+            $product->update();
+        });
     }
 
     public function edit(Product $product, ProductRequest $request): Product
@@ -58,8 +67,7 @@ class ProductService
             'title',
             'slug',
             'description',
-            'price',
-            'status'
+            'price'
         ]));
 
         if ($request['category'] !== null) {

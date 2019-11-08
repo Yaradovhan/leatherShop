@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label for="role" class="col-form-label">Role</label>
-            <select name="role" id="role" class="form-control{{$errors->has('role') ? ' is-invalid' : ''}}">
+            <select name="role" id="role" class="form-control{{$errors->has('role') ? ' is-invalid' : ''}} selectpicker">
                 @foreach($roles as $value=>$label)
                     <option value="{{$value}}" {{$value === old('role', $user->role) ? 'selected' : ''}}>{{$label}}
                     </option>

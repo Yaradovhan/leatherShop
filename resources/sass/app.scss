@@ -181,6 +181,7 @@ body {
         padding: 44px 59px 44px 56px;
     }
 }
+
 @media (max-width: 575.98px) {
     .cart-total {
         border-top: 4px solid #fab134;
@@ -231,16 +232,19 @@ body {
     color: rgb(149, 149, 149);
     padding: 10px;
 }
+
 .alert-minimalist > [data-notify="icon"] {
     height: 50px;
     margin-right: 12px;
 }
+
 .alert-minimalist > [data-notify="title"] {
     color: rgb(51, 51, 51);
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
+
 .alert-minimalist > [data-notify="message"] {
     font-size: 80%;
 }
@@ -269,4 +273,11 @@ body {
 .breadcrumb {
     background: none;
     padding: 0;
+}
+
+.media-body {
+    width: 50px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
